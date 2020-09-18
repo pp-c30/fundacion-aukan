@@ -10,4 +10,4 @@ function principal()
 }
 
 //se ejecuta la funcion
-principal();
+principal()

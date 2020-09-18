@@ -38,7 +38,7 @@ export class server {
     async listen()
     {
         await this.app.listen(this.app.get('port'));
-        console.log('Servidor corriendo en el puerto 3000')
+        console.log('Servidor corriendo en el puerto 3000');
     }
 
 

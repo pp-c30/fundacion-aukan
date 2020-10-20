@@ -19,5 +19,38 @@ class Catgaleriacontroller {
             return res.json(catgaleria);
         });
     }
+    guardarcatgaleria(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const db = yield database_1.conexion();
+            const catgaleria = req.body;
+            yield db.query("insert into categoria_galeria set ?", [catgaleria]);
+            return res.json('los datos se ingresaron exitosamente');
+        });
+    }
+    eliminarcatgaleria(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const db = yield database_1.conexion();
+            let id = req.params.id;
+            yield db.query('delete from categoria_galeria where id_cg =?', id);
+            return res.json("los datos se eliminaron exitosamente");
+        });
+    }
+    actualizarcatgaleria(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const db = yield database_1.conexion();
+            let id = req.params.id;
+            let catgaleria = req.body;
+            yield db.query('update categoria_galeria set ? where id_cg =?', [catgaleria, id]);
+            return res.json('los datos se actualizaron exitosamente');
+        });
+    }
+    buscarcatgaleria(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const db = yield database_1.conexion();
+            let id = req.params.id;
+            let catgaleria = yield db.query('select * from categoria_galeria where id_cg = ? ', [id]);
+            return res.json(catgaleria[0]);
+        });
+    }
 }
 exports.Catgaleriacontroller = Catgaleriacontroller;

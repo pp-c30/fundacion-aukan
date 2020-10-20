@@ -1,5 +1,7 @@
 import express, { Application } from "express";
 
+import enrutadorGaleria from  './routes/galeria.routes';
+import enrutadorCatgaleria from './routes/cat_galeria.routes';
 
 export class server {
 
@@ -24,7 +26,8 @@ export class server {
     //
     routes()
     {
-        
+        this.app.use(enrutadorGaleria);
+        this.app.use(enrutadorCatgaleria);
     }
 
 

@@ -14,6 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.server = void 0;
 const express_1 = __importDefault(require("express"));
+const galeria_routes_1 = __importDefault(require("./routes/galeria.routes"));
+const cat_galeria_routes_1 = __importDefault(require("./routes/cat_galeria.routes"));
 class server {
     constructor() {
         this.app = express_1.default();
@@ -27,6 +29,8 @@ class server {
     }
     //
     routes() {
+        this.app.use(galeria_routes_1.default);
+        this.app.use(cat_galeria_routes_1.default);
     }
     middleware() {
         this.app.use(express_1.default.json());

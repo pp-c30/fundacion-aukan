@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const cat_noticiascontroller_1 = require("../controllers/cat_noticiascontroller");
+let catnoticiacontroller = new cat_noticiascontroller_1.Catnoticiacontroller;
+const enrutadorCatnoticia = express_1.Router();
+enrutadorCatnoticia.route('/catnoticia').get(catnoticiacontroller.listarcatnoticias);
+enrutadorCatnoticia.route('/catnoticia').post(catnoticiacontroller.guardarcatnoticias);
+enrutadorCatnoticia.route('/catnoticia/:id').delete(catnoticiacontroller.eliminarcatnoticia);
+enrutadorCatnoticia.route('/catnoticia/:id').put(catnoticiacontroller.actualizarcatnoticia);
+enrutadorCatnoticia.route('/catnoticia/:id').get(catnoticiacontroller.buscarcatnoticia);
+exports.default = enrutadorCatnoticia;

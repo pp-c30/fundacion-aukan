@@ -2,7 +2,6 @@ import {Response, Request} from 'express';
 import {conexion} from '../database';
 import { ICatgaleria } from '../models/cat_galeria';
 
-
 export class Catgaleriacontroller
 {
     public async listarcatgaleria(req:Request,res:Response)

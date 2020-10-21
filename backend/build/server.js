@@ -17,6 +17,7 @@ const express_1 = __importDefault(require("express"));
 const galeria_routes_1 = __importDefault(require("./routes/galeria.routes"));
 const cat_galeria_routes_1 = __importDefault(require("./routes/cat_galeria.routes"));
 const cat_noticias_routes_1 = __importDefault(require("./routes/cat_noticias.routes"));
+const cat_donaciones_routes_1 = __importDefault(require("./routes/cat_donaciones.routes"));
 class server {
     constructor() {
         this.app = express_1.default();
@@ -33,6 +34,7 @@ class server {
         this.app.use(galeria_routes_1.default);
         this.app.use(cat_galeria_routes_1.default);
         this.app.use(cat_noticias_routes_1.default);
+        this.app.use(cat_donaciones_routes_1.default);
     }
     middleware() {
         this.app.use(express_1.default.json());

@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.server = void 0;
 const express_1 = __importDefault(require("express"));
+const morgan_1 = __importDefault(require("morgan"));
 class server {
     constructor() {
         this.app = express_1.default();
@@ -29,13 +30,14 @@ class server {
     routes() {
     }
     middleware() {
+        this.app.use(morgan_1.default('dev'));
         this.app.use(express_1.default.json());
     }
     //este metodo se encarga de correr el servidor
     listen() {
         return __awaiter(this, void 0, void 0, function* () {
             yield this.app.listen(this.app.get('port'));
-            console.log('Servidor corriendo en el puerto 3000');
+            console.log("Servidor corriendo en el puerto 3000");
         });
     }
 }

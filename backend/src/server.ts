@@ -1,4 +1,5 @@
 import express, { Application } from "express";
+import morgan from "morgan";
 
 
 export class server {
@@ -18,7 +19,7 @@ export class server {
     configuracion()
     {
         //se configura el puerto que se utilizara para correr el servidor
-        this.app.set('port', process.env.port || 3000)
+        this.app.set('port', process.env.port || 3000);
     }
 
     //
@@ -30,6 +31,7 @@ export class server {
 
     middleware()
     {
+        this.app.use(morgan('dev'));
         this.app.use(express.json());
     }
 
@@ -38,7 +40,7 @@ export class server {
     async listen()
     {
         await this.app.listen(this.app.get('port'));
-        console.log('Servidor corriendo en el puerto 3000');
+        console.log("Servidor corriendo en el puerto 3000");
     }
 
 

@@ -1,6 +1,11 @@
 import express, { Application } from "express";
 import morgan from "morgan";
 
+import enrutadorGaleria from  './routes/galeria.routes';
+import enrutadorCatgaleria from './routes/cat_galeria.routes';
+import enrutadorCatnoticias from "./routes/cat_noticias.routes";
+import enrutadorCatdonaciones from './routes/cat_donaciones.routes';
+import enrutadorActividades from "./routes/actividades.routes";
 
 export class server {
 
@@ -25,7 +30,11 @@ export class server {
     //
     routes()
     {
-        
+        this.app.use(enrutadorGaleria);
+        this.app.use(enrutadorCatgaleria);
+        this.app.use(enrutadorCatnoticias);
+        this.app.use(enrutadorCatdonaciones);
+        this.app.use(enrutadorActividades);
     }
 
 

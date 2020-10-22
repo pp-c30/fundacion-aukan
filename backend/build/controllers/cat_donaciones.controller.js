@@ -9,48 +9,48 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ActividadesController = void 0;
+exports.Catdonacionescontroller = void 0;
 const database_1 = require("../database");
-class ActividadesController {
-    listarActividad(req, res) {
+class Catdonacionescontroller {
+    listarcatdonaciones(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
-            let actividad = yield db.query('select * from actividad');
-            return res.json(actividad);
+            let catdonaciones = yield db.query('select * from categoria_donaciones');
+            return res.json(catdonaciones);
         });
     }
-    guardarActividad(req, res) {
+    guardarcatdonaciones(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
-            const actividad = req.body;
-            yield db.query('inset into actividades set ?', [actividad]);
-            return res.json('La actividad fue guardada con exito');
+            const catdonaciones = req.body;
+            yield db.query("insert into categoria_donaciones set ?", [catdonaciones]);
+            return res.json('los datos se ingresaron exitosamente');
         });
     }
-    eliminarActividad(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const db = yield database_1.conexion();
-            let id = req.params.is;
-            yield db.query('delete from actividades where id_actividades = ?', [id]);
-            return res.json('La actividad fue eliminada con exito');
-        });
-    }
-    actualizarActividad(req, res) {
+    eliminarcatdonaciones(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             let id = req.params.id;
-            let actividadActualizada = req.body;
-            yield db.query('update actividades set ? where id_actividades = ?', [actividadActualizada]);
-            return res.json('La actividad se a actualizado con exito');
+            yield db.query('delete from categoria_donaciones where id_cd =?', id);
+            return res.json("los datos se eliminaron exitosamente");
         });
     }
-    buscarActividad(req, res) {
+    actualizarcatdonaciones(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             let id = req.params.id;
-            let actividad = yield db.query('select * from actividades where id_actividades = ?', [id]);
-            return res.json(actividad[0]);
+            let catdonaciones = req.body;
+            yield db.query('update categoria_donaciones set ? where id_cd =?', [catdonaciones, id]);
+            return res.json('los datos se actualizaron exitosamente');
+        });
+    }
+    buscarcatdonaciones(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const db = yield database_1.conexion();
+            let id = req.params.id;
+            let catdonaciones = yield db.query('select * from categoria_donaciones where id_cd = ? ', [id]);
+            return res.json(catdonaciones[0]);
         });
     }
 }
-exports.ActividadesController = ActividadesController;
+exports.Catdonacionescontroller = Catdonacionescontroller;

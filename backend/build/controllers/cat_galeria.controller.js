@@ -9,48 +9,48 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ActividadesController = void 0;
+exports.Catgaleriacontroller = void 0;
 const database_1 = require("../database");
-class ActividadesController {
-    listarActividad(req, res) {
+class Catgaleriacontroller {
+    listarcatgaleria(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
-            let actividad = yield db.query('select * from actividad');
-            return res.json(actividad);
+            let catgaleria = yield db.query('select * from categoria_galeria');
+            return res.json(catgaleria);
         });
     }
-    guardarActividad(req, res) {
+    guardarcatgaleria(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
-            const actividad = req.body;
-            yield db.query('inset into actividades set ?', [actividad]);
-            return res.json('La actividad fue guardada con exito');
+            const catgaleria = req.body;
+            yield db.query("insert into categoria_galeria set ?", [catgaleria]);
+            return res.json('los datos se ingresaron exitosamente');
         });
     }
-    eliminarActividad(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const db = yield database_1.conexion();
-            let id = req.params.is;
-            yield db.query('delete from actividades where id_actividades = ?', [id]);
-            return res.json('La actividad fue eliminada con exito');
-        });
-    }
-    actualizarActividad(req, res) {
+    eliminarcatgaleria(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             let id = req.params.id;
-            let actividadActualizada = req.body;
-            yield db.query('update actividades set ? where id_actividades = ?', [actividadActualizada]);
-            return res.json('La actividad se a actualizado con exito');
+            yield db.query('delete from categoria_galeria where id_cg =?', id);
+            return res.json("los datos se eliminaron exitosamente");
         });
     }
-    buscarActividad(req, res) {
+    actualizarcatgaleria(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             let id = req.params.id;
-            let actividad = yield db.query('select * from actividades where id_actividades = ?', [id]);
-            return res.json(actividad[0]);
+            let catgaleria = req.body;
+            yield db.query('update categoria_galeria set ? where id_cg =?', [catgaleria, id]);
+            return res.json('los datos se actualizaron exitosamente');
+        });
+    }
+    buscarcatgaleria(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const db = yield database_1.conexion();
+            let id = req.params.id;
+            let catgaleria = yield db.query('select * from categoria_galeria where id_cg = ? ', [id]);
+            return res.json(catgaleria[0]);
         });
     }
 }
-exports.ActividadesController = ActividadesController;
+exports.Catgaleriacontroller = Catgaleriacontroller;

@@ -15,6 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.server = void 0;
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
+const galeria_routes_1 = __importDefault(require("./routes/galeria.routes"));
+const cat_galeria_routes_1 = __importDefault(require("./routes/cat_galeria.routes"));
+const cat_noticias_routes_1 = __importDefault(require("./routes/cat_noticias.routes"));
+const cat_donaciones_routes_1 = __importDefault(require("./routes/cat_donaciones.routes"));
+const actividades_routes_1 = __importDefault(require("./routes/actividades.routes"));
 class server {
     constructor() {
         this.app = express_1.default();
@@ -28,6 +33,11 @@ class server {
     }
     //
     routes() {
+        this.app.use(galeria_routes_1.default);
+        this.app.use(cat_galeria_routes_1.default);
+        this.app.use(cat_noticias_routes_1.default);
+        this.app.use(cat_donaciones_routes_1.default);
+        this.app.use(actividades_routes_1.default);
     }
     middleware() {
         this.app.use(morgan_1.default('dev'));

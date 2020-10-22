@@ -45,7 +45,7 @@ export class ActividadesController{
 
         let actividadActualizada = req.body;
 
-        await db.query('update actividades set ? where id_actividades = ?', [actividadActualizada]);
+        await db.query('update actividades set ? where id_actividades = ?', [actividadActualizada,id]);
 
         return res.json('La actividad se a actualizado con exito');
     }

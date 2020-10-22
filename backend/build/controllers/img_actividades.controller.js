@@ -9,48 +9,48 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CatprevencionController = void 0;
+exports.ImgactividadesController = void 0;
 const database_1 = require("../database");
-class CatprevencionController {
-    listarCatprevencion(req, res) {
+class ImgactividadesController {
+    listarImgactividades(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
-            let catprevencion = yield db.query('select * from categoria_prevencion');
-            return res.json(catprevencion);
+            let imgactividades = yield db.query('select * from imagenes_actividades');
+            return res.json(imgactividades);
         });
     }
-    guardarCatprevencion(req, res) {
+    guardarImgactividades(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
-            const catprevencion = req.body;
-            yield db.query('inset into categoria_prevencion set ?', [catprevencion]);
+            const imgactividades = req.body;
+            yield db.query('inset into imagenes_actividades set ?', [imgactividades]);
             return res.json('Los datos fueron guardados con exito');
         });
     }
-    eliminarCatprevencion(req, res) {
+    eliminarImgactividades(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             let id = req.params.id;
-            yield db.query('delete from categoria_prevencion where id_cp = ?', [id]);
+            yield db.query('delete from imagenes_actividades where id_ai = ?', [id]);
             return res.json('Los datos fueron eliminados con exito');
         });
     }
-    actualizarCatprevencion(req, res) {
+    actualizaImgactividades(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             let id = req.params.id;
-            let catprevencionActualizada = req.body;
-            yield db.query('update categoria_prevencion set ? where id_cp = ?', [catprevencionActualizada, id]);
+            let imgactividadesActualizada = req.body;
+            yield db.query('update imagenes_actividades set ? where id_ai = ?', [imgactividadesActualizada, id]);
             return res.json('Los datos fueron actualizados con exito');
         });
     }
-    buscarCatprevencion(req, res) {
+    buscarImgactividades(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             let id = req.params.id;
-            let catprevencion = yield db.query('select * from categoria_prevencion where id_cp = ?', [id]);
-            return res.json(catprevencion[0]);
+            let imgactividades = yield db.query('select * from imagenes_actividades where id_ai = ?', [id]);
+            return res.json(imgactividades[0]);
         });
     }
 }
-exports.CatprevencionController = CatprevencionController;
+exports.ImgactividadesController = ImgactividadesController;

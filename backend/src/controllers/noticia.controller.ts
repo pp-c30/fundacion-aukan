@@ -44,7 +44,7 @@ export class NoticiaController{
 
         let noticiaActualizada = req.body;
 
-        await db.query('update noticia set ? where id_noticia = ?', [noticiaActualizada]);
+        await db.query('update noticia set ? where id_noticia = ?', [noticiaActualizada,id]);
 
         return res.json('Los datos fueron actualizados con exito');
     }

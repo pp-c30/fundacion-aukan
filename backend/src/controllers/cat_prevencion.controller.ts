@@ -44,7 +44,7 @@ export class CatprevencionController{
 
         let catprevencionActualizada = req.body;
 
-        await db.query('update categoria_prevencion set ? where id_cp = ?', [catprevencionActualizada]);
+        await db.query('update categoria_prevencion set ? where id_cp = ?', [catprevencionActualizada,id]);
 
         return res.json('Los datos fueron actualizados con exito');
     }

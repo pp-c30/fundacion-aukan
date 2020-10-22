@@ -40,7 +40,7 @@ class PrevencionController {
             const db = yield database_1.conexion();
             let id = req.params.id;
             let prevencionActualizada = req.body;
-            yield db.query('update prevencion set ? where id_prevencion = ?', [prevencionActualizada]);
+            yield db.query('update prevencion set ? where id_prevencion = ?', [prevencionActualizada, id]);
             return res.json('Los datos fueron actualizados con exito');
         });
     }

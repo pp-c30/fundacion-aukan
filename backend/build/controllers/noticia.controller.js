@@ -40,7 +40,7 @@ class NoticiaController {
             const db = yield database_1.conexion();
             let id = req.params.id;
             let noticiaActualizada = req.body;
-            yield db.query('update noticia set ? where id_noticia = ?', [noticiaActualizada]);
+            yield db.query('update noticia set ? where id_noticia = ?', [noticiaActualizada, id]);
             return res.json('Los datos fueron actualizados con exito');
         });
     }

@@ -44,7 +44,7 @@ export class PrevencionController{
 
         let prevencionActualizada = req.body;
 
-        await db.query('update prevencion set ? where id_prevencion = ?', [prevencionActualizada]);
+        await db.query('update prevencion set ? where id_prevencion = ?', [prevencionActualizada,id]);
 
         return res.json('Los datos fueron actualizados con exito');
     }

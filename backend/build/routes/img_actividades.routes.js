@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const img_actividades_controller_1 = require("../controllers/img_actividades.controller");
+let imgactividadesController = new img_actividades_controller_1.ImgactividadesController();
+const enrutadorImgactividades = express_1.Router();
+enrutadorImgactividades.route('/imgactividades').get(imgactividadesController.listarImgactividades);
+enrutadorImgactividades.route('/imgactividades').post(imgactividadesController.guardarImgactividades);
+enrutadorImgactividades.route('/imgactividades/:id').delete(imgactividadesController.eliminarImgactividades);
+enrutadorImgactividades.route('/imgactividades/:id').put(imgactividadesController.actualizaImgactividades);
+enrutadorImgactividades.route('/imgactividades/:id').get(imgactividadesController.buscarImgactividades);
+exports.default = enrutadorImgactividades;

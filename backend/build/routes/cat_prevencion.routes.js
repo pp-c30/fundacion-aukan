@@ -1,1 +1,12 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const cat_prevencion_controller_1 = require("../controllers/cat_prevencion.controller");
+let catprevencionController = new cat_prevencion_controller_1.CatprevencionController();
+const enrutadorCatprevencion = express_1.Router();
+enrutadorCatprevencion.route('/actividades').get(catprevencionController.listarCatprevencion);
+enrutadorCatprevencion.route('/actividades').post(catprevencionController.guardarCatprevencion);
+enrutadorCatprevencion.route('/actividades/:id').delete(catprevencionController.eliminarCatprevencion);
+enrutadorCatprevencion.route('actividades/:id').put(catprevencionController.actualizarCatprevencion);
+enrutadorCatprevencion.route('/actividades/:id').get(catprevencionController.buscarCatprevencion);
+exports.default = enrutadorCatprevencion;

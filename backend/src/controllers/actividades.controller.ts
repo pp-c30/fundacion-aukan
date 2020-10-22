@@ -29,7 +29,7 @@ export class ActividadesController{
 
         const db = await conexion();
 
-        let id = req.params.is;
+        let id = req.params.id;
 
         await db.query('delete from actividades where id_actividades = ?', [id]);
 

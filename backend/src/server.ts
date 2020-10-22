@@ -6,6 +6,7 @@ import enrutadorCatgaleria from './routes/cat_galeria.routes';
 import enrutadorCatnoticias from "./routes/cat_noticias.routes";
 import enrutadorCatdonaciones from './routes/cat_donaciones.routes';
 import enrutadorActividades from "./routes/actividades.routes";
+import enrutadorCatprevencion from "./routes/cat_prevencion.routes";
 
 export class server {
 
@@ -35,6 +36,7 @@ export class server {
         this.app.use(enrutadorCatnoticias);
         this.app.use(enrutadorCatdonaciones);
         this.app.use(enrutadorActividades);
+        this.app.use(enrutadorCatprevencion);
     }
 
 

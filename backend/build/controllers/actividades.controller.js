@@ -30,7 +30,7 @@ class ActividadesController {
     eliminarActividad(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
-            let id = req.params.is;
+            let id = req.params.id;
             yield db.query('delete from actividades where id_actividades = ?', [id]);
             return res.json('La actividad fue eliminada con exito');
         });

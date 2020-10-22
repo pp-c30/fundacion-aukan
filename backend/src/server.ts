@@ -8,6 +8,7 @@ import enrutadorCatdonaciones from './routes/cat_donaciones.routes';
 import enrutadorActividades from "./routes/actividades.routes";
 import enrutadorCatprevencion from "./routes/cat_prevencion.routes";
 import enrutadorPrevencion from "./routes/prevencion.routes";
+import enrutadorNoticia from "./routes/noticia.routes";
 
 export class server {
 
@@ -39,6 +40,7 @@ export class server {
         this.app.use(enrutadorActividades);
         this.app.use(enrutadorCatprevencion);
         this.app.use(enrutadorPrevencion);
+        this.app.use(enrutadorNoticia);
     }
 
 

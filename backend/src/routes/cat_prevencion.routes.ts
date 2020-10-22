@@ -5,10 +5,10 @@ let catprevencionController = new CatprevencionController();
 
 const enrutadorCatprevencion = Router();
 
-enrutadorCatprevencion.route('/actividades').get(catprevencionController.listarCatprevencion);
-enrutadorCatprevencion.route('/actividades').post(catprevencionController.guardarCatprevencion);
-enrutadorCatprevencion.route('/actividades/:id').delete(catprevencionController.eliminarCatprevencion);
-enrutadorCatprevencion.route('actividades/:id').put(catprevencionController.actualizarCatprevencion);
-enrutadorCatprevencion.route('/actividades/:id').get(catprevencionController.buscarCatprevencion);
+enrutadorCatprevencion.route('/catprevencion').get(catprevencionController.listarCatprevencion);
+enrutadorCatprevencion.route('/catprevencion').post(catprevencionController.guardarCatprevencion);
+enrutadorCatprevencion.route('/catprevencion/:id').delete(catprevencionController.eliminarCatprevencion);
+enrutadorCatprevencion.route('catprevencion/:id').put(catprevencionController.actualizarCatprevencion);
+enrutadorCatprevencion.route('/catprevencion/:id').get(catprevencionController.buscarCatprevencion);
 
 export default enrutadorCatprevencion;

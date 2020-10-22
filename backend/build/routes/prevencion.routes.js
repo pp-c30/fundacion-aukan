@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const prevencion_controller_1 = require("../controllers/prevencion.controller");
+let prevencionController = new prevencion_controller_1.PrevencionController();
+const enrutadorPrevencion = express_1.Router();
+enrutadorPrevencion.route('/prevencion').get(prevencionController.listarPrevencion);
+enrutadorPrevencion.route('/prevencion').post(prevencionController.guardarPrevencion);
+enrutadorPrevencion.route('/prevencion/:id').delete(prevencionController.eliminarPrevencion);
+enrutadorPrevencion.route('/prevencion/:id').put(prevencionController.actualizarPrevencion);
+enrutadorPrevencion.route('/prevencion/:id').get(prevencionController.buscarPrevencion);
+exports.default = enrutadorPrevencion;

@@ -25,6 +25,7 @@ const prevencion_routes_1 = __importDefault(require("./routes/prevencion.routes"
 const noticia_routes_1 = __importDefault(require("./routes/noticia.routes"));
 const img_actividades_routes_1 = __importDefault(require("./routes/img_actividades.routes"));
 const img_galeria_routes_1 = __importDefault(require("./routes/img_galeria.routes"));
+const donaciones_routes_1 = __importDefault(require("./routes/donaciones.routes"));
 class server {
     constructor() {
         this.app = express_1.default();
@@ -48,6 +49,7 @@ class server {
         this.app.use(noticia_routes_1.default);
         this.app.use(img_actividades_routes_1.default);
         this.app.use(img_galeria_routes_1.default);
+        this.app.use(donaciones_routes_1.default);
     }
     middleware() {
         this.app.use(morgan_1.default('dev'));

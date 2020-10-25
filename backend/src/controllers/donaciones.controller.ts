@@ -19,7 +19,7 @@ export class DonacionesController{
 
         const donaciones:IDonaciones = req.body;
 
-        await db.query('inset into donaciones set ?', [donaciones]);
+        await db.query('insert into donaciones set ?', [donaciones]);
 
         return res.json('Los datos fueron guardados con exito');
     }
@@ -30,7 +30,7 @@ export class DonacionesController{
 
         let id = req.params.id;
 
-        await db.query('delete from donaciones where id_donaciones = ?', [id]);
+        await db.query('delete from donaciones where id_donacion = ?', [id]);
 
         return res.json('Los datos fueron eliminados con exito');
 
@@ -44,7 +44,7 @@ export class DonacionesController{
 
         let donacionesActualizada = req.body;
 
-        await db.query('update donaciones set ? where id_donaciones = ?', [donacionesActualizada,id]);
+        await db.query('update donaciones set ? where id_donacion = ?', [donacionesActualizada,id]);
 
         return res.json('Los datos fueron actualizados con exito');
     }
@@ -55,8 +55,8 @@ export class DonacionesController{
 
         let id = req.params.id;
 
-        let donaciones = await db.query('select * from donaciones where id_donaciones = ?', [id]);
+        let donaciones = await db.query('select * from donaciones where id_donacion = ?', [id]);
         
         return res.json(donaciones [0]);
-    }
+    } 
 }

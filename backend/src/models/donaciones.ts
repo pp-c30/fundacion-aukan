@@ -1,8 +1,8 @@
 export interface IDonaciones{
-    id?:number;
-    titulo:string;
+    id_donacion?:number;
     descripcion:string;
-    imagen:string;
-    categoria_dona:number;
-    estado:number;
-}
+    categoria?:number;
+    telefono:number;
+    direccion:string;
+    estado:string;
+}  

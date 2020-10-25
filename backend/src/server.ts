@@ -11,6 +11,7 @@ import enrutadorPrevencion from "./routes/prevencion.routes";
 import enrutadorNoticia from "./routes/noticia.routes";
 import enrutadorImgactividades from "./routes/img_actividades.routes";
 import enrutadorimggaleria from './routes/img_galeria.routes';
+import enrutadorDonaciones from "./routes/donaciones.routes";
 
 export class server {
 
@@ -45,6 +46,7 @@ export class server {
         this.app.use(enrutadorNoticia);
         this.app.use(enrutadorImgactividades);
         this.app.use(enrutadorimggaleria)
+        this.app.use(enrutadorDonaciones)
     }
 
 

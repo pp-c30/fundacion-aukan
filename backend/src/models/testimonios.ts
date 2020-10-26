@@ -1,8 +1,8 @@
 export interface ITestimonios{
     id?:number;
-    titulo:string;
+    nombre:string;
+    edad:number;
     descripcion:string;
     imagen:string;
-    categoria_testimonios:number;
     estado:number;
 }

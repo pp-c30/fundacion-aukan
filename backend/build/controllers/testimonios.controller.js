@@ -23,7 +23,7 @@ class TestimoniosController {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             const testimonios = req.body;
-            yield db.query('inset into testimonios set ?', [testimonios]);
+            yield db.query('insert into testimonios set ?', [testimonios]);
             return res.json('Los datos fueron guardados con exito');
         });
     }
@@ -31,7 +31,7 @@ class TestimoniosController {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             let id = req.params.id;
-            yield db.query('delete from testimonios where id_testimonios = ?', [id]);
+            yield db.query('delete from testimonios where id_testimonio = ?', [id]);
             return res.json('Los datos fueron eliminados con exito');
         });
     }
@@ -40,7 +40,7 @@ class TestimoniosController {
             const db = yield database_1.conexion();
             let id = req.params.id;
             let testimoniosActualizada = req.body;
-            yield db.query('update testimonios set ? where id_testimonios = ?', [testimoniosActualizada, id]);
+            yield db.query('update testimonios set ? where id_testimonio = ?', [testimoniosActualizada, id]);
             return res.json('Los datos fueron actualizados con exito');
         });
     }
@@ -48,7 +48,7 @@ class TestimoniosController {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             let id = req.params.id;
-            let testimonios = yield db.query('select * from testimonios where id_testimonios = ?', [id]);
+            let testimonios = yield db.query('select * from testimonios where id_testimonio = ?', [id]);
             return res.json(testimonios[0]);
         });
     }

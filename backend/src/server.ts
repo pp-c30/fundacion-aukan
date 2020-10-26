@@ -12,6 +12,7 @@ import enrutadorNoticia from "./routes/noticia.routes";
 import enrutadorImgactividades from "./routes/img_actividades.routes";
 import enrutadorimggaleria from './routes/img_galeria.routes';
 import enrutadorDonaciones from "./routes/donaciones.routes";
+import enrutadorTestimonios from "./routes/testimonios.routes";
 
 export class server {
 
@@ -47,6 +48,7 @@ export class server {
         this.app.use(enrutadorImgactividades);
         this.app.use(enrutadorimggaleria)
         this.app.use(enrutadorDonaciones)
+        this.app.use(enrutadorTestimonios)
     }
 
 

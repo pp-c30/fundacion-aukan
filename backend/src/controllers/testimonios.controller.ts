@@ -19,7 +19,7 @@ export class TestimoniosController{
 
         const testimonios:ITestimonios = req.body;
 
-        await db.query('inset into testimonios set ?', [testimonios]);
+        await db.query('insert into testimonios set ?', [testimonios]);
 
         return res.json('Los datos fueron guardados con exito');
     }
@@ -30,7 +30,7 @@ export class TestimoniosController{
 
         let id = req.params.id;
 
-        await db.query('delete from testimonios where id_testimonios = ?', [id]);
+        await db.query('delete from testimonios where id_testimonio = ?', [id]);
 
         return res.json('Los datos fueron eliminados con exito');
 
@@ -44,7 +44,7 @@ export class TestimoniosController{
 
         let testimoniosActualizada = req.body;
 
-        await db.query('update testimonios set ? where id_testimonios = ?', [testimoniosActualizada,id]);
+        await db.query('update testimonios set ? where id_testimonio = ?', [testimoniosActualizada,id]);
 
         return res.json('Los datos fueron actualizados con exito');
     }
@@ -55,7 +55,7 @@ export class TestimoniosController{
 
         let id = req.params.id;
 
-        let testimonios = await db.query('select * from testimonios where id_testimonios = ?', [id]);
+        let testimonios = await db.query('select * from testimonios where id_testimonio = ?', [id]);
         
         return res.json(testimonios [0]);
     }

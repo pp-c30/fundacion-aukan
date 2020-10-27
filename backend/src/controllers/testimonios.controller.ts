@@ -1,6 +1,16 @@
 import { conexion } from "../database";
 import { Request,Response } from "express";
 import { ITestimonios } from "../models/testimonios";
+import cloudinary from "cloudinary";
+import  fs  from "fs-extra";
+
+cloudinary.v2.config({
+    cloud_name:'lemillion',
+    api_key:'323978568364464',
+    api_secret:'xgECcAjSh7FL_bzLWt3QKBv3doY'
+})
+
+
 
 export class TestimoniosController{
 
@@ -17,11 +27,27 @@ export class TestimoniosController{
 
         const db= await conexion();
 
-        const testimonios:ITestimonios = req.body;
+        const url_img = req.file.path;
 
-        await db.query('insert into testimonios set ?', [testimonios]);
+        const resultado_cloud  = await cloudinary.v2.uploader.upload(req.file.path);
 
-        return res.json('Los datos fueron guardados con exito');
+         console.log(resultado_cloud)
+        const guardartestimonio = {
+            nombre:req.body.nombre,
+            edad:req.body.edad,
+            descripcion:req.body.descripcion,
+            imagen:resultado_cloud.url,
+            estado:req.body.estado,
+            public_id:resultado_cloud.public_id
+
+        }
+
+
+        await db.query('insert into testimonios set ?', [guardartestimonio]);
+
+        fs.unlink(req.file.path)
+
+        return res.json('La imagen fue guardada con exito');
     }
 
     public async eliminarTestimonios(req:Request,res:Response){

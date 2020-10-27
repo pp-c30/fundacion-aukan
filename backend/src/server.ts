@@ -1,5 +1,7 @@
 import express, { Application } from "express";
 import morgan from "morgan";
+import cors from "cors";
+import path from "path";
 
 import enrutadorGaleria from  './routes/galeria.routes';
 import enrutadorCatgaleria from './routes/cat_galeria.routes';
@@ -46,15 +48,18 @@ export class server {
         this.app.use(enrutadorPrevencion);
         this.app.use(enrutadorNoticia);
         this.app.use(enrutadorImgactividades);
-        this.app.use(enrutadorimggaleria)
-        this.app.use(enrutadorDonaciones)
-        this.app.use(enrutadorTestimonios)
+        this.app.use(enrutadorimggaleria);
+        this.app.use(enrutadorDonaciones);
+        this.app.use(enrutadorTestimonios);
+        //e comfigura el server para que el navegador puda leer esta carpeta y tambien las imagenes
+        this.app.use('/uploads',express.static(path.resolve('uploads')));
     }
 
 
     middleware()
     {
         this.app.use(morgan('dev'));
+        this.app.use(cors());
         this.app.use(express.json());
     }
 

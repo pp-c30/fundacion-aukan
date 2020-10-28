@@ -19,7 +19,7 @@ export class ActividadesController{
 
         const actividad:IActividades = req.body;
 
-        await db.query('inset into actividades set ?', [actividad]);
+        await db.query('insert into actividades set ?', [actividad]);
 
         return res.json('La actividad fue guardada con exito');
     }

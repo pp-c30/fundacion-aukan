@@ -51,7 +51,7 @@ export class server {
         this.app.use(enrutadorimggaleria);
         this.app.use(enrutadorDonaciones);
         this.app.use(enrutadorTestimonios);
-        //e comfigura el server para que el navegador puda leer esta carpeta y tambien las imagenes
+        //se comfigura el server para que el navegador puda leer esta carpeta y tambien las imagenes
         this.app.use('/uploads',express.static(path.resolve('uploads')));
     }
 

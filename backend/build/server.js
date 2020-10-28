@@ -54,7 +54,7 @@ class server {
         this.app.use(img_galeria_routes_1.default);
         this.app.use(donaciones_routes_1.default);
         this.app.use(testimonios_routes_1.default);
-        //e comfigura el server para que el navegador puda leer esta carpeta y tambien las imagenes
+        //se comfigura el server para que el navegador puda leer esta carpeta y tambien las imagenes
         this.app.use('/uploads', express_1.default.static(path_1.default.resolve('uploads')));
     }
     middleware() {

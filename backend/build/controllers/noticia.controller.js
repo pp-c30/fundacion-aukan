@@ -23,7 +23,7 @@ class NoticiaController {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             const noticia = req.body;
-            yield db.query('inset into noticia set ?', [noticia]);
+            yield db.query('insert into noticia set ?', [noticia]);
             return res.json('Los datos fueron guardados con exito');
         });
     }

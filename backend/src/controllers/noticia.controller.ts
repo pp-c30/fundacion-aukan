@@ -19,7 +19,7 @@ export class NoticiaController{
 
         const noticia:INoticia = req.body;
 
-        await db.query('inset into noticia set ?', [noticia]);
+        await db.query('insert into noticia set ?', [noticia]);
 
         return res.json('Los datos fueron guardados con exito');
     }

@@ -8,9 +8,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TestimoniosController = void 0;
 const database_1 = require("../database");
+const cloudinary_1 = __importDefault(require("cloudinary"));
+const fs_extra_1 = __importDefault(require("fs-extra"));
+cloudinary_1.default.v2.config({
+    cloud_name: 'lemillion',
+    api_key: '323978568364464',
+    api_secret: 'xgECcAjSh7FL_bzLWt3QKBv3doY'
+});
 class TestimoniosController {
     listarTestimonios(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -22,9 +32,20 @@ class TestimoniosController {
     guardarTestimonios(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
-            const testimonios = req.body;
-            yield db.query('insert into testimonios set ?', [testimonios]);
-            return res.json('Los datos fueron guardados con exito');
+            const url_img = req.file.path;
+            const resultado_cloud = yield cloudinary_1.default.v2.uploader.upload(req.file.path);
+            console.log(resultado_cloud);
+            const guardartestimonio = {
+                nombre: req.body.nombre,
+                edad: req.body.edad,
+                descripcion: req.body.descripcion,
+                imagen: resultado_cloud.url,
+                estado: req.body.estado,
+                public_id: resultado_cloud.public_id
+            };
+            yield db.query('insert into testimonios set ?', [guardartestimonio]);
+            fs_extra_1.default.unlink(req.file.path);
+            return res.json('La imagen fue guardada con exito');
         });
     }
     eliminarTestimonios(req, res) {

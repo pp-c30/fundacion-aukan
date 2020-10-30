@@ -15,6 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.server = void 0;
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
+const cors_1 = __importDefault(require("cors"));
+const path_1 = __importDefault(require("path"));
 const galeria_routes_1 = __importDefault(require("./routes/galeria.routes"));
 const cat_galeria_routes_1 = __importDefault(require("./routes/cat_galeria.routes"));
 const cat_noticias_routes_1 = __importDefault(require("./routes/cat_noticias.routes"));
@@ -52,9 +54,12 @@ class server {
         this.app.use(img_galeria_routes_1.default);
         this.app.use(donaciones_routes_1.default);
         this.app.use(testimonios_routes_1.default);
+        //se configura el server para que el navegador pueda leer esta carpeta y tambien las imagenes
+        this.app.use('/uploads', express_1.default.static(path_1.default.resolve('uploads')));
     }
     middleware() {
         this.app.use(morgan_1.default('dev'));
+        this.app.use(cors_1.default());
         this.app.use(express_1.default.json());
     }
     //este metodo se encarga de correr el servidor

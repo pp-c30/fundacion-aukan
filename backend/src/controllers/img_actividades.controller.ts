@@ -19,7 +19,7 @@ export class ImgactividadesController{
 
         const imgactividades:IImgactividades = req.body;
 
-        await db.query('inset into imagenes_actividades set ?', [imgactividades]);
+        await db.query('insert into imagenes_actividades set ?', [imgactividades]);
 
         return res.json('Los datos fueron guardados con exito');
     }

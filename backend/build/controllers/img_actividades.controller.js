@@ -23,7 +23,7 @@ class ImgactividadesController {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             const imgactividades = req.body;
-            yield db.query('inset into imagenes_actividades set ?', [imgactividades]);
+            yield db.query('insert into imagenes_actividades set ?', [imgactividades]);
             return res.json('Los datos fueron guardados con exito');
         });
     }

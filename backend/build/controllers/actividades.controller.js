@@ -23,7 +23,7 @@ class ActividadesController {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             const actividad = req.body;
-            yield db.query('inset into actividades set ?', [actividad]);
+            yield db.query('insert into actividades set ?', [actividad]);
             return res.json('La actividad fue guardada con exito');
         });
     }

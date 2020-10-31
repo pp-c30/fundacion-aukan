@@ -17,9 +17,9 @@ const database_1 = require("../database");
 const cloudinary_1 = __importDefault(require("cloudinary"));
 const fs_extra_1 = __importDefault(require("fs-extra"));
 cloudinary_1.default.v2.config({
-    cloud_name: 'dnap4dywk',
-    api_key: '941663136346744',
-    api_secret: 'RxuYIKsxJ00EccBCrtyogCj9DTc'
+    cloud_name: 'lemillion',
+    api_key: '323978568364464',
+    api_secret: 'xgECcAjSh7FL_bzLWt3QKBv3doY'
 });
 class NoticiaController {
     listarNoticia(req, res) {
@@ -38,7 +38,7 @@ class NoticiaController {
             const guardarnoticia = {
                 titulo: req.body.titulo,
                 descripcion: req.body.descripcion,
-                imagen_url: resultado_cloud.url,
+                imagen: resultado_cloud.url,
                 fecha_hora: req.body.fecha_hora,
                 categoria: req.body.categoria,
                 estado: req.body.estado,
@@ -46,7 +46,7 @@ class NoticiaController {
             };
             yield db.query('insert into noticia set ?', [guardarnoticia]);
             fs_extra_1.default.unlink(req.file.path);
-            return res.json('Los datos fueron guardados con exito');
+            return res.json('Los imagen fue guardados con exito');
         });
     }
     eliminarNoticia(req, res) {

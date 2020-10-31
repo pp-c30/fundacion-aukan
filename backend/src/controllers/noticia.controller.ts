@@ -4,9 +4,9 @@ import cloudinary from "cloudinary";
 import fs from "fs-extra";
 
 cloudinary.v2.config({
-    cloud_name:'dnap4dywk',
-    api_key:'941663136346744',
-    api_secret:'RxuYIKsxJ00EccBCrtyogCj9DTc'
+    cloud_name:'lemillion',
+    api_key:'323978568364464',
+    api_secret:'xgECcAjSh7FL_bzLWt3QKBv3doY'
 });
 
 export class NoticiaController{
@@ -26,15 +26,14 @@ export class NoticiaController{
 
         const url_img = req.file.path;
 
-        
         const resultado_cloud = await cloudinary.v2.uploader.upload(req.file.path);
 
-        console.log(resultado_cloud);
-
+        console.log(resultado_cloud)
+        
         const guardarnoticia = {
             titulo:req.body.titulo,
             descripcion:req.body.descripcion,
-            imagen_url:resultado_cloud.url,
+            imagen:resultado_cloud.url,
             fecha_hora:req.body.fecha_hora,
             categoria:req.body.categoria,
             estado:req.body.estado,
@@ -42,10 +41,10 @@ export class NoticiaController{
         }
 
         await db.query('insert into noticia set ?', [guardarnoticia]);
+        
+        fs.unlink(req.file.path)
 
-        fs.unlink(req.file.path);
-
-        return res.json('Los datos fueron guardados con exito');
+        return res.json('Los imagen fue guardados con exito');
     }
 
     public async eliminarNoticia(req:Request,res:Response){

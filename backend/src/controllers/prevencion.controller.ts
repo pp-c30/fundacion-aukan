@@ -1,6 +1,5 @@
 import { conexion } from "../database";
 import { Request,Response } from "express";
-import { IPrevencion } from "../models/prevencion";
 import cloudinary from "cloudinary";
 import  fs  from "fs-extra";
 

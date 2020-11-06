@@ -1,4 +1,5 @@
-export interface IActividades{
+export interface IActividades
+{
     id?:number;
     titulo: string;
     descripcion: string;

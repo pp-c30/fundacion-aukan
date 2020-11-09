@@ -29,18 +29,16 @@ export class Galeriacontroller
         const files:any = req.files;
 
         const ti = req.body.titulo;
-        const des = req.body.descripcion;
-        const cat = req.body.categoria_galeria;
-        const fe = req.body.fecha_hora;
+        const cat = req.body.categoria_gale;
+        const fe = req.body.fecha;
         const es = req.body.estado;
 
         const db = await conexion();
 
         const unaGaleria = {
             titulo:ti,
-            descripcion:des,
-            categoria_galeria:cat,
-            fecha_hora:fe,
+            categoria_gale:cat,
+            fecha:fe,
             estado:es
         }
 
@@ -64,10 +62,6 @@ export class Galeriacontroller
             await fs.unlink(files[i].path);
         }
         
-        const galeria:Igaleria = req.body;
-
-        await db.query("insert into galeria set ?",[galeria]);
-
         return res.json('los datos se ingresaron exitosamente');
 
     }

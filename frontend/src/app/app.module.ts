@@ -15,6 +15,11 @@ import { ImgGaleriaComponent } from './components/img-galeria/img-galeria.compon
 import { NoticiaComponent } from './components/noticia/noticia.component';
 import { PrevencionComponent } from './components/prevencion/prevencion.component';
 import { TestimoniosComponent } from './components/testimonios/testimonios.component';
+import { AdminGaleriaComponent } from './components/admin-galeria/admin-galeria.component';
+import { AdminDetalleGaleriaComponent } from './components/admin-detalle-galeria/admin-detalle-galeria.component';
+import { NavegacionComponent } from './components/navegacion/navegacion.component';
+
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,11 +35,15 @@ import { TestimoniosComponent } from './components/testimonios/testimonios.compo
     ImgGaleriaComponent,
     NoticiaComponent,
     PrevencionComponent,
-    TestimoniosComponent
+    TestimoniosComponent,
+    AdminGaleriaComponent,
+    AdminDetalleGaleriaComponent,
+    NavegacionComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

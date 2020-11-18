@@ -20,6 +20,7 @@ import { AdminDetalleGaleriaComponent } from './components/admin-detalle-galeria
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { AdminTestimoniosComponent } from './components/admin-testimonios/admin-testimonios.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     TestimoniosComponent,
     AdminGaleriaComponent,
     AdminDetalleGaleriaComponent,
-    NavegacionComponent
+    NavegacionComponent,
+    AdminTestimoniosComponent
   ],
   imports: [
     BrowserModule,

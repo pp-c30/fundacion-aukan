@@ -1,0 +1,42 @@
+<div class="row">
+    
+    <div class="col-md-8">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>id_testimonio</th>
+                    <th>nombre</th>
+                    <th>edad</th>
+                    <th>descripcion</th>
+                    <th>imagen</th>
+                    <th>estado</th>
+                    <th>public_id</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fila of listado_datos_testimonios">
+                    <td>{{fila.id_testimonio}}</td>
+                    <td>{{fila.nombre}}</td>
+                    <td>{{fila.edad}}</td>
+                    <td>{{fila.descripcion}}</td>
+                    <td>
+                        <img style="width: 75px;" class="img-fluid rounded" [src] = "fila.imagen" alt="">
+                    </td>
+                    <td>{{fila.estado}}</td>
+                    <td>{{fila.public_id}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="col-md-4">
+
+
+
+    </div>
+
+
+
+
+</div>

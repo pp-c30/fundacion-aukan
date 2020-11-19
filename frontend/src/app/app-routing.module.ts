@@ -1,7 +1,10 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { from } from 'rxjs';
+import { AdminActividadesComponent } from './components/admin-actividades/admin-actividades.component';
 
 import { AdminGaleriaComponent } from './components/admin-galeria/admin-galeria.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -11,6 +14,9 @@ const routes: Routes = [
 
   {
     path: 'admin-galeria', component: AdminGaleriaComponent
+  },
+  {
+    path: 'admin-actividades', component: AdminActividadesComponent
   }
 ];
 

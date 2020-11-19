@@ -8,15 +8,27 @@ cloudinary.v2.config({
     cloud_name:'lemillion',
     api_key:'323978568364464',
     api_secret:'xgECcAjSh7FL_bzLWt3QKBv3doY'
-})
+}); 
 
 export class ActividadesController{
+
+    async listarActividades(req:Request, res:Response)
+    {
+
+        const db = await conexion(); 
+
+        let actividades = await db.query('select * from actividades');
+
+        res.json(actividades);
+
+
+    }
 
     public async listarActividad(req:Request,res:Response){
 
         const db = await conexion();
 
-        let actividad = await db.query('select * from actividad');
+        let actividad = await db.query('select * from actividades');
 
         return res.json (actividad);
     }
@@ -106,4 +118,4 @@ export class ActividadesController{
         return res.json(actividad[0]);
     }
 
-}
+} 

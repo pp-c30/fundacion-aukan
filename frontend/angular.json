@@ -30,6 +30,7 @@
                         "scripts": [
                             "node_modules/jquery/dist/jquery.min.js",
                             "node_modules/bootswatch/dist/materia/bootstrap.min.js"
+
                         ]
                     },
                     "configurations": {

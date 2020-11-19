@@ -20,8 +20,10 @@ import { AdminDetalleGaleriaComponent } from './components/admin-detalle-galeria
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { AdminActividadesComponent } from './components/admin-actividades/admin-actividades.component';
+import { AdminDetalleActividadesComponent } from './components/admin-detalle-actividades/admin-detalle-actividades.component';
 
-import {ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms"; 
 
 import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
@@ -41,7 +43,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
     TestimoniosComponent,
     AdminGaleriaComponent,
     AdminDetalleGaleriaComponent,
-    NavegacionComponent
+    NavegacionComponent,
+    AdminActividadesComponent,
+    AdminDetalleActividadesComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +53,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
     HttpClientModule,
     ReactiveFormsModule,
     NgxSpinnerModule
+
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

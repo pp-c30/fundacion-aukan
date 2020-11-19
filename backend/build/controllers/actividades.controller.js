@@ -22,10 +22,17 @@ cloudinary_1.default.v2.config({
     api_secret: 'xgECcAjSh7FL_bzLWt3QKBv3doY'
 });
 class ActividadesController {
+    listarActividades(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const db = yield database_1.conexion();
+            let actividades = yield db.query('select * from actividades');
+            res.json(actividades);
+        });
+    }
     listarActividad(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
-            let actividad = yield db.query('select * from actividad');
+            let actividad = yield db.query('select * from actividades');
             return res.json(actividad);
         });
     }

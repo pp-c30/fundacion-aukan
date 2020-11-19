@@ -20,6 +20,10 @@ import { AdminDetalleGaleriaComponent } from './components/admin-detalle-galeria
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { AdminActividadesComponent } from './components/admin-actividades/admin-actividades.component';
+import { AdminDetalleActividadesComponent } from './components/admin-detalle-actividades/admin-detalle-actividades.component';
+
+import { ReactiveFormsModule } from "@angular/forms"; 
 
 @NgModule({
   declarations: [
@@ -38,12 +42,16 @@ import { HttpClientModule } from '@angular/common/http';
     TestimoniosComponent,
     AdminGaleriaComponent,
     AdminDetalleGaleriaComponent,
-    NavegacionComponent
+    NavegacionComponent,
+    AdminActividadesComponent,
+    AdminDetalleActividadesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

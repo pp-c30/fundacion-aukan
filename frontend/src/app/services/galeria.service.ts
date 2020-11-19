@@ -12,7 +12,7 @@ export class GaleriaService {
   }
 
 
-    /**savegaleria(datosgaleria: IGaleria,files:FileList)
+    savegaleria(datosgaleria: IGaleria,files:FileList)
     {
       const fd = new FormData();
 
@@ -30,5 +30,10 @@ export class GaleriaService {
 
       return this.http.post('http://localhost:3000/galeria', fd);
 
-   }**/
+   }
+
+   getGaleria()
+   {
+    return this.http.get<IGaleria[]>('http://localhost:3000/galeria');
+   }
 }

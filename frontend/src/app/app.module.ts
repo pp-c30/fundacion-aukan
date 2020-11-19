@@ -21,6 +21,9 @@ import { NavegacionComponent } from './components/navegacion/navegacion.componen
 
 import { HttpClientModule } from '@angular/common/http';
 
+import {ReactiveFormsModule } from "@angular/forms";
+
+import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +46,9 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

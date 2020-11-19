@@ -17,5 +17,15 @@ export class TestimoniosService {
    getTestimonios(){
      return this.http.get<ITestimonios[]>('http://localhost:3000/testimonios');
    }
+   
+   saveTestimonio(dataTestimonio:ITestimonios, file:File){
 
+    const fd = new FormData();
+
+    fd.append('nombre', dataTestimonio.nombre);
+    fd.append('descripcion',dataTestimonio.descripcion);
+    fd.append('imagen',file);
+
+    return this.http.post('http://localhost:3000/testimonios',fd);
+   }
 }

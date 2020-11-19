@@ -18,9 +18,11 @@ import { TestimoniosComponent } from './components/testimonios/testimonios.compo
 import { AdminGaleriaComponent } from './components/admin-galeria/admin-galeria.component';
 import { AdminDetalleGaleriaComponent } from './components/admin-detalle-galeria/admin-detalle-galeria.component';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
+import { AdminTestimoniosComponent } from './components/admin-testimonios/admin-testimonios.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { AdminTestimoniosComponent } from './components/admin-testimonios/admin-testimonios.component';
+
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { AdminTestimoniosComponent } from './components/admin-testimonios/admin-
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

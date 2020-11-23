@@ -82,5 +82,31 @@ class Galeriacontroller {
             return res.json(galeria[0]);
         });
     }
+    listarImgGaleria(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let id_galeria = req.params.id_galeria;
+            const db = yield database_1.conexion();
+            let lista_img_galeria = yield db.query('select * from imagenes_galeria where id_galeria = ?', [id_galeria]);
+            res.json(lista_img_galeria);
+        });
+    }
+    agregarimagengaleria(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const archivos = req.files;
+            let id_galeria = req.params.id_galeria;
+            const db = yield database_1.conexion();
+            for (let index = 0; index < archivos.length; index++) {
+                const resultado_c = yield cloudinary_1.default.v2.uploader.upload(archivos[index].path);
+                const imagen_galeria = {
+                    id_galeria: id_galeria,
+                    imagen_url: resultado_c.url,
+                    public_id: resultado_c.public_id
+                };
+                yield db.query('insert into imagenes_galeria set ?', [imagen_galeria]);
+                yield fs_extra_1.default.unlink(archivos[index].path);
+            }
+            res.json('se agregaron las imagenes de manera exitosa');
+        });
+    }
 }
 exports.Galeriacontroller = Galeriacontroller;

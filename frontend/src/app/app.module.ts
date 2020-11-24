@@ -21,9 +21,14 @@ import { NavegacionComponent } from './components/navegacion/navegacion.componen
 import { AdminTestimoniosComponent } from './components/admin-testimonios/admin-testimonios.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { AdminActividadesComponent } from './components/admin-actividades/admin-actividades.component';
+import { AdminDetalleActividadesComponent } from './components/admin-detalle-actividades/admin-detalle-actividades.component';
+
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
+import { NgxSpinnerModule } from "ngx-spinner";
+import { DetalleTestimoniosComponent } from './components/detalle-testimonios/detalle-testimonios.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,14 +47,19 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     AdminGaleriaComponent,
     AdminDetalleGaleriaComponent,
     NavegacionComponent,
-    AdminTestimoniosComponent
+    AdminTestimoniosComponent,
+    AdminActividadesComponent,
+    AdminDetalleActividadesComponent,
+    DetalleTestimoniosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

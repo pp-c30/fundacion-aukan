@@ -10,7 +10,7 @@ let testimoniosController = new testimonios_controller_1.TestimoniosController()
 const enrutadorTestimonios = express_1.Router();
 enrutadorTestimonios.route('/testimonios').get(testimoniosController.listarTestimonios);
 enrutadorTestimonios.route('/testimonios').post(multer_1.default.single('imagen'), testimoniosController.guardarTestimonios);
-enrutadorTestimonios.route('/testimonios/:id').delete(testimoniosController.eliminarTestimonios);
-enrutadorTestimonios.route('/testimonios/:id').put(testimoniosController.actualizarTestimonios);
-enrutadorTestimonios.route('/testimonios/:id').get(testimoniosController.buscarTestimonios);
+enrutadorTestimonios.route('/testimonios/:id/:public_id').delete(testimoniosController.eliminarTestimonios);
+enrutadorTestimonios.route('/testimonios/:id').put(multer_1.default.single('imagen'), testimoniosController.actualizarTestimonios);
+enrutadorTestimonios.route('/testimonios/:id').get(testimoniosController.listarUnTestimonio);
 exports.default = enrutadorTestimonios;

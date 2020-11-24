@@ -50,22 +50,55 @@ class TestimoniosController {
     }
     eliminarTestimonios(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const db = yield database_1.conexion();
             let id = req.params.id;
+            let public_id = req.params.public_id;
+            //eliminamos imagen de cloudinary
+            yield cloudinary_1.default.v2.uploader.destroy(public_id);
+            const db = yield database_1.conexion();
+            //eliminamos registro en la base
             yield db.query('delete from testimonios where id_testimonio = ?', [id]);
             return res.json('Los datos fueron eliminados con exito');
         });
     }
     actualizarTestimonios(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const db = yield database_1.conexion();
-            let id = req.params.id;
-            let testimoniosActualizada = req.body;
-            yield db.query('update testimonios set ? where id_testimonio = ?', [testimoniosActualizada, id]);
-            return res.json('Los datos fueron actualizados con exito');
+            try {
+                const db = yield database_1.conexion();
+                let id = req.params.id;
+                var updateTestimonio;
+                var public_id_anterior = req.body.public_id;
+                if (req.file) {
+                    //se sube imagen a cloudinary y se genera public_id
+                    const resultado_cloud = yield cloudinary_1.default.v2.uploader.upload(req.file.path);
+                    updateTestimonio = {
+                        nombre: req.body.nombre,
+                        edad: req.body.edad,
+                        descripcion: req.body.descripcion,
+                        imagen: resultado_cloud.url,
+                        estado: req.body.estado,
+                        public_id: resultado_cloud.public_id
+                    };
+                    yield db.query('update testimonios set ? where id_testimonio = ?', [updateTestimonio, id]);
+                    fs_extra_1.default.unlink(req.file.path);
+                    yield cloudinary_1.default.v2.uploader.destroy(public_id_anterior);
+                }
+                else {
+                    updateTestimonio = {
+                        nombre: req.body.nombre,
+                        edad: req.body.edad,
+                        descripcion: req.body.descripcion,
+                        estado: req.body.estado
+                    };
+                    yield db.query('update testimonios set ? where id_testimonio = ?', [updateTestimonio, id]);
+                }
+                res.json('Se actualizo exitosamente');
+            }
+            catch (error) {
+                console.error(error);
+            }
         });
     }
-    buscarTestimonios(req, res) {
+    listarUnTestimonio(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             let id = req.params.id;

@@ -4,6 +4,8 @@ import { TestimoniosService } from "../../services/testimonios.service";
 
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
+import {NgxSpinnerService } from "ngx-spinner";
+
 interface HtmlInputEvent{
   target:HTMLInputElement & EventTarget;
 }
@@ -25,7 +27,7 @@ export class AdminTestimoniosComponent implements OnInit {
   imagenPreview:string | ArrayBuffer;
 
 
-  constructor(private serTestimonios:TestimoniosService, private fb:FormBuilder) {
+  constructor(private serTestimonios:TestimoniosService, private fb:FormBuilder, private spinner:NgxSpinnerService) {
 
     this.formTestimonios = this.fb.group({
       id_testimonio:[''],
@@ -42,6 +44,24 @@ export class AdminTestimoniosComponent implements OnInit {
     this.listarTestimonios();
   }
 
+
+  eliminarTestimonio(fila:ITestimonios){
+
+  if(confirm('¿Esta seguro que desea eliminar estos datos?')){
+
+    this.spinner.show();
+    this.serTestimonios.deleteTestimonio(fila).subscribe(
+      resultado => {
+        console.log(resultado);
+        this.listarTestimonios();
+        this.spinner.hide();
+      },
+      error => console.log(error)
+    )
+  }
+    
+  }
+
   listarTestimonios(){
     this.serTestimonios.getTestimonios().subscribe(
       resultado =>{
@@ -54,17 +74,35 @@ export class AdminTestimoniosComponent implements OnInit {
 
   guardarTestimonio(){
      
-    this.serTestimonios.saveTestimonio(this.formTestimonios.value,this.file).subscribe(
-      resultado => {
-        console.log(resultado);
-        
-        this.imagenPreview = '';
-        this.formTestimonios.reset();
-        this.listarTestimonios();
-        
-      },
-      error => console.log(error)
-    )
+    if(this.formTestimonios.value.id_testimonio){
+
+      this.spinner.show();
+      this.serTestimonios.updateTestimonio(this.formTestimonios.value,this.file).subscribe(
+        resultado =>{
+          console.log(resultado);
+          this.imagenPreview = '';
+          this.formTestimonios.reset();
+          this.listarTestimonios();
+
+          this.spinner.hide();
+        },
+        error=> console.log(error)
+      )
+
+    }else{
+      this.serTestimonios.saveTestimonio(this.formTestimonios.value,this.file).subscribe(
+        resultado => {
+          console.log(resultado);
+          
+          this.imagenPreview = '';
+          this.formTestimonios.reset();
+          this.listarTestimonios();
+          
+        },
+        error => console.log(error)
+      )
+    }
+
 
   }
 
@@ -72,9 +110,16 @@ export class AdminTestimoniosComponent implements OnInit {
     this.formTestimonios.setValue({
       id_testimonio:fila.id_testimonio,
       nombre:fila.nombre,
-      descripcion:fila.descripcion
+      edad: fila.edad,
+      descripcion:fila.descripcion,
+      estado:fila.estado,
+      archivo:''
     });
+
+    this.imagenPreview = fila.imagen;
   }
+
+  
 
   mostrarFotoSeleccionada(evento:HtmlInputEvent){
     //realizaremos la lectura de la foto

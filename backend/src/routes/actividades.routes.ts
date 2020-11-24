@@ -11,5 +11,5 @@ enrutadorActividades.route('/actividades/:id').delete(actividadesController.elim
 enrutadorActividades.route('/actividades/:id').put(actividadesController.actualizarActividad);
 enrutadorActividades.route('/actividades/:id').get(actividadesController.buscarActividad);
 
-export default enrutadorActividades;
+export default enrutadorActividades;  
 

@@ -1,1 +1,27 @@
-<p>testimonios works!</p>
+<div class="row">
+    <div *ngFor ="let fila of lista_datos" class="col-lg-6">
+
+        <!--<div class="card">
+            <img class="card-img-top" [src]="fila.imagen" alt="" style="height: 200px;">
+            <div class="card-body">
+                <h4 clas="card-title">{{fila.nombre}}</h4>
+                <button class="btn btn-primary btn-sm">Ver mas</button>
+            </div>
+        </div>-->
+
+        <div class="card mb-6" style="max-width: 500px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img [src]="fila.imagen" class="card-img" alt="..." style="height: 125px;">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{fila.nombre}}</h5>
+                  <p class="card-text"></p>
+                  <button (click)="verDetalle(fila.id_testimonio)" class="btn btn-primary btn-sm">Ver mas</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>

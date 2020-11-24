@@ -1,9 +1,12 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { from } from 'rxjs';
+import { AdminActividadesComponent } from './components/admin-actividades/admin-actividades.component';
 
 import { AdminGaleriaComponent } from './components/admin-galeria/admin-galeria.component';
-import { AdminTestimoniosComponent } from "./components/admin-testimonios/admin-testimonios.component";
 
+import { AdminTestimoniosComponent } from "./components/admin-testimonios/admin-testimonios.component";
+import { DetalleTestimoniosComponent } from './components/detalle-testimonios/detalle-testimonios.component';
 import { TestimoniosComponent } from "./components/testimonios/testimonios.component";
 
 const routes: Routes = [
@@ -12,7 +15,6 @@ const routes: Routes = [
     redirectTo: '/admin-galeria',
     pathMatch: 'full'
   },
-
   {
     path: 'admin-galeria', component: AdminGaleriaComponent
   },
@@ -23,6 +25,13 @@ const routes: Routes = [
   {
     path:'testimonios',
     component:TestimoniosComponent
+  },
+  {
+    path: 'admin-actividades', component: AdminActividadesComponent
+  },
+  {
+    path:'detalle-testimonios/:id',
+    component:DetalleTestimoniosComponent
   }
 
 ];

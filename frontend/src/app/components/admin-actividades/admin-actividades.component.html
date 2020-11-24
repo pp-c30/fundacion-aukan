@@ -1,0 +1,70 @@
+<div class="row">
+
+    <div class="col-lg-6">
+    
+        <div class="card">
+            <div class="card-header">Formulario actividades</div>
+            <div class="card-body">
+
+            <form [formGroup]="formActividades">
+                <div class="form-group">
+                    <input formControlName="titulo" placeholder="ingrese el titulo de la imagen" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input formControlName="descripcion" placeholder="ingrese una descripcion" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input formControlName="categoria_actividad" placeholder="ingrese el tipo de actividad" type="number" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input formControlName="fecha_hora" placeholder="ingrese fecha y hora de la imagen" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input formControlName="estado" placeholder="ingrese el estado" type="number" class="form-control">
+                </div>
+                <div class="form-group">
+                   <input formControlName="archivo" class="form-control-file" type="file" name="" id="" multiple> 
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-success">Guardar</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+
+    <div class="card">
+        <div class="card-header">
+            Grilla actividades
+        </div>
+        <div class="card body">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Nombre de la actividad</th>
+                        <th>Descripcion de la actividad</th>
+                        <th>Categoria de la actividad</th>
+                        <th>Fecha y Hora de la actividad</th>
+                        <th>Estado de la actividad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let fila of actividades">
+                        <td>{{fila.id_actividades}}</td>
+                        <td>{{fila.titulo}}</td>
+                        <td>{{fila.descripcion}}</td>
+                        <td>{{fila.categoria_actividad}}</td>
+                        <td>{{fila.fecha_hora}}</td>
+                        <td>{{fila.estado}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    </div>
+</div> 

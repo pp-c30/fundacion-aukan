@@ -1,5 +1,5 @@
 import { conexion } from "../database";
-import { Request,Response } from "express";
+import { query, Request,Response } from "express";
 import cloudinary from "cloudinary";
 import  fs  from "fs-extra";
 
@@ -51,10 +51,14 @@ export class TestimoniosController{
 
     public async eliminarTestimonios(req:Request,res:Response){
 
-        const db = await conexion();
-
         let id = req.params.id;
+        let public_id = req.params.public_id;
 
+        //eliminamos imagen de cloudinary
+        await cloudinary.v2.uploader.destroy(public_id);        
+
+        const db = await conexion();
+        //eliminamos registro en la base
         await db.query('delete from testimonios where id_testimonio = ?', [id]);
 
         return res.json('Los datos fueron eliminados con exito');
@@ -62,19 +66,43 @@ export class TestimoniosController{
     }
 
     public async actualizarTestimonios(req:Request,res:Response){
+        try {
+            const db = await conexion();
+            let id= req.params.id;
+            var updateTestimonio;
+            var public_id_anterior = req.body.public_id;
 
-        const db = await conexion();
+            if(req.file){
+                //se sube imagen a cloudinary y se genera public_id
+                const resultado_cloud = await cloudinary.v2.uploader.upload(req.file.path);
+                updateTestimonio = {
+                    nombre:req.body.nombre,
+                    edad:req.body.edad,
+                    descripcion:req.body.descripcion,
+                    imagen:resultado_cloud.url,
+                    estado:req.body.estado,
+                    public_id:resultado_cloud.public_id
+                }
+                await db.query('update testimonios set ? where id_testimonio = ?', [updateTestimonio,id]);
 
-        let id= req.params.id;
-
-        let testimoniosActualizada = req.body;
-
-        await db.query('update testimonios set ? where id_testimonio = ?', [testimoniosActualizada,id]);
-
-        return res.json('Los datos fueron actualizados con exito');
+                fs.unlink(req.file.path);
+                await cloudinary.v2.uploader.destroy(public_id_anterior);
+            }else{
+                updateTestimonio = {
+                    nombre:req.body.nombre,
+                    edad:req.body.edad,
+                    descripcion:req.body.descripcion,
+                    estado:req.body.estado
+                }
+                await db.query('update testimonios set ? where id_testimonio = ?', [updateTestimonio,id]);
+            }
+            res.json('Se actualizo exitosamente');
+        } catch (error) {
+            console.error(error);
+        }
     }
 
-    public async buscarTestimonios(req:Request,res:Response){
+    public async listarUnTestimonio(req:Request,res:Response){
 
         const db = await conexion();
 

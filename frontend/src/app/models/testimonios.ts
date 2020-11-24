@@ -1,9 +1,9 @@
 export interface ITestimonios{
         id_testimonio?:number;
         nombre:string;
-        edad:number;
+        edad:any;
         descripcion:string;
         imagen:string;
-        estado:number;
+        estado:any;
         public_id:string;
 }

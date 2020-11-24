@@ -27,7 +27,7 @@
                     <td>{{fila.public_id}}</td>
                     <td>
                         <div class="btn-group btn-group-small">
-                            <button class="btn btn-danger">Eliminar</button>
+                            <button class="btn btn-danger" (click)="eliminarTestimonio(fila)">Eliminar</button>
                             <button class="btn btn-primary" (click)="editarTestimonio(fila)">Editar</button>
                         </div>
                     </td>
@@ -43,7 +43,7 @@
 
         <div class="card-body">
             <form [formGroup]="formTestimonios" (ngSubmit)="guardarTestimonio()" novalidate>
-                <input formControlName="id_testimonio" type="text" class="form-control">
+                <input formControlName="id_testimonio" type="hidden" class="form-control">
                 
                 <div class="form-group">
                     <input formControlName="nombre" placeholder="Ingrese nombre" type="text" class="form-control">
@@ -78,3 +78,5 @@
 
 
 </div>
+
+<ngx-spinner></ngx-spinner>

@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { IGaleria } from '../models/galeria';
+
+import { IGaleriaDetalle } from '../models/galeriaDetalle';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,4 +39,25 @@ export class GaleriaService {
    {
     return this.http.get<IGaleria[]>('http://localhost:3000/galeria');
    }
+
+   getImgGaleria(id_galeria:number)
+   {
+     return this.http.get<IGaleriaDetalle[]>('http://localhost:3000/galeria-imagenes/'+id_galeria);
+   }
+
+   addimageGaleria(id_galeria:number, files:FileList)
+   {
+      const fd = new FormData();
+
+      for (let index = 0; index < files.length; index++) {
+        
+
+        fd.append('imagen', files[index])
+      }
+
+      
+
+     return this.http.put('http://localhost:3000/agregar-imagenes-galeria/'+id_galeria, fd) 
+   }
+
 }

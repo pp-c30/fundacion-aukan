@@ -8,6 +8,8 @@ import {FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { IHtmlImputEvent } from '../../models/previewGaleria';
 
 import { NgxSpinnerService } from "ngx-spinner";
+
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-admin-galeria',
   templateUrl: './admin-galeria.component.html',
@@ -23,7 +25,7 @@ export class AdminGaleriaComponent implements OnInit {
 
   img_url = [];
 
-  constructor(private fb:FormBuilder, private serviceGaleria:GaleriaService,private spinner: NgxSpinnerService ) { 
+  constructor(private router:Router, private fb:FormBuilder, private serviceGaleria:GaleriaService,private spinner: NgxSpinnerService ) { 
 
     this.formGaleria = this.fb.group({
       titulo:['',[Validators.required]],
@@ -100,4 +102,13 @@ export class AdminGaleriaComponent implements OnInit {
         }
       }
   }
+
+//metodo encargado de mostrar detalles de galeria
+detalleEvento(id_galeria:number)
+{
+  this.router.navigate(['/admin-detalle-galeria', id_galeria]);
+}
+
+
+
 }

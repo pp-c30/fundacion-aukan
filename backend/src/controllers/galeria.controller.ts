@@ -92,7 +92,7 @@ export class Galeriacontroller
     }
 
     public async buscargaleria(req:Request, res:Response)
-    {
+    { 
         const db = await conexion();
 
         let id = req.params.id;
@@ -103,16 +103,47 @@ export class Galeriacontroller
 
     }
 
+
+    async listarImgGaleria(req:Request,res:Response)
+    {
+        let id_galeria = req.params.id_galeria;
+
+        const db = await conexion();
+
+        let lista_img_galeria = await db.query('select * from imagenes_galeria where id_galeria = ?',[id_galeria]);
+
+        res.json(lista_img_galeria);
+
+    }
+
     
+   async agregarimagengaleria(req:Request, res:Response)
+    {
+        const archivos:any = req.files;
+
+        let id_galeria = req.params.id_galeria;
+
+        const db = await conexion();
 
 
+        for (let index = 0; index < archivos.length; index++) {
 
+            const resultado_c = await cloudinary.v2.uploader.upload(archivos[index].path);
 
+            const imagen_galeria = {
+                id_galeria:id_galeria,
+                imagen_url:resultado_c.url,
+                public_id:resultado_c.public_id
 
+            }
 
+            await db.query('insert into imagenes_galeria set ?', [imagen_galeria])
 
+            await fs.unlink(archivos[index].path);
+        }
 
-
+        res.json('se agregaron las imagenes de manera exitosa')
+    }
 
 
 

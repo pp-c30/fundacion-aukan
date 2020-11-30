@@ -103,12 +103,27 @@ export class AdminGaleriaComponent implements OnInit {
       }
   }
 
-//metodo encargado de mostrar detalles de galeria
-detalleEvento(id_galeria:number)
-{
-  this.router.navigate(['/admin-detalle-galeria', id_galeria]);
-}
+  //metodo encargado de mostrar detalles de galeria
+  detalleEvento(id_galeria:number)
+  {
+    this.router.navigate(['/admin-detalle-galeria', id_galeria]);
+  }
 
+  eliminarGaleria(id_galeria:number)
+  {
+    if(confirm('esta sewguro de eliminar esta coleccion de imagenes?'))
+    {
+      this.serviceGaleria.deleteGaleria(id_galeria).subscribe(
+        resultado=>{
+          console.log(resultado);
+          this.listaGaleria();
+        }
+      )
+    }
+    
+
+    
+  }
 
 
 }

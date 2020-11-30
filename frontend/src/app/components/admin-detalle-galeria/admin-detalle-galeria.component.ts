@@ -10,8 +10,6 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 
 import { IHtmlImputEvent } from '../../models/previewGaleria';
 
-import { NgxSpinnerService } from "ngx-spinner";
-
 @Component({
   selector: 'app-admin-detalle-galeria',
   templateUrl: './admin-detalle-galeria.component.html',
@@ -29,7 +27,7 @@ export class AdminDetalleGaleriaComponent implements OnInit {
 
   img_leidas = [];
 
-  constructor(private fb:FormBuilder, private activatedrouter:ActivatedRoute, private servicegaleria:GaleriaService, private spinner: NgxSpinnerService) 
+  constructor(private fb:FormBuilder, private activatedrouter:ActivatedRoute, private servicegaleria:GaleriaService) 
   { 
     this.formDetalleGaleria = this.fb.group({
       archive:['']
@@ -83,12 +81,11 @@ export class AdminDetalleGaleriaComponent implements OnInit {
 
   agregarimagenesGaleria()
   {
-    this.spinner.show();
       this.servicegaleria.addimageGaleria(this.id_galeria, this.archivos).subscribe(
         resultado => {
           this.formDetalleGaleria.reset();
           this.listarImgGaleria(this.id_galeria);
-          this.img_leidas = []
+          this.img_leidas = [];
         },
 
         
@@ -97,4 +94,20 @@ export class AdminDetalleGaleriaComponent implements OnInit {
       )
   }
 
+
+
+  eliminarImgGaleria(id_gi:number,public_id:string)
+  {
+    if(confirm('Esta seguro de llevar a cabo esta accion')){
+
+      this.servicegaleria.deleteImgGaleria(id_gi,public_id).subscribe(
+        resultado => {
+          console.log(resultado);
+          this.listarImgGaleria(this.id_galeria);
+        },
+      );   
+    }
+  }
 }
+
+

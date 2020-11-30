@@ -57,7 +57,17 @@ export class GaleriaService {
 
       
 
-     return this.http.put('http://localhost:3000/agregar-imagenes-galeria/'+id_galeria, fd) 
+     return this.http.put('http://localhost:3000/agregar-imagenes-galeria/'+id_galeria, fd);
+   }
+
+   deleteImgGaleria (id_gi:number, public_id:string)
+   {
+    return this.http.delete('http://localhost:3000/galeria-imagenes-detalle/'+id_gi+'/'+public_id);
+   }
+
+   deleteGaleria(id_galeria:number)
+   {
+     return this.http.delete('http://localhost:3000/galeriaimg/'+id_galeria);
    }
 
 }

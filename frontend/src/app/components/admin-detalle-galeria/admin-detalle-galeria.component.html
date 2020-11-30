@@ -1,5 +1,6 @@
 <div class="row">
     <div class="col-3">
+
         <table class="tables table-striped">
             <thead>
                 <tr>
@@ -12,11 +13,11 @@
                 <tr *ngFor="let fila of img_galeria">
                     <td>{{fila.id_gi}}</td>
                     <td>
-                        <img class="img-fluid w-50" [src]="fila.imagen_url" alt="" srcset="">
+                        <img style="height: 110px;" class="img-fluid w-100" [src]="fila.imagen_url" alt="" srcset="">
                     </td>
                     <td>
                         <div class="btn-group">
-                            <button class="btn btn-danger">Eliminar</button>
+                            <button (click)="eliminarImgGaleria(fila.id_gi,fila.public_id) " class="btn btn-danger">Eliminar</button>
                         </div>
                     </td>
                 </tr>

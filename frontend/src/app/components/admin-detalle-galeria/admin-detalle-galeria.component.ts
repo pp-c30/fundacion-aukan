@@ -109,9 +109,9 @@ export class AdminDetalleGaleriaComponent implements OnInit {
     }
   }
 
-  establecerPortada(id_gi:number)
+  establecerPortada(id_gi:number,id_galeria:number)
   {
-    this.servicegaleria.assingPortada(id_gi).subscribe(
+    this.servicegaleria.assingPortada(id_gi,id_galeria).subscribe(
       resultado => {
         this.listarImgGaleria(this.id_galeria)
       }

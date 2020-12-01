@@ -76,8 +76,8 @@ export class GaleriaService {
 
 
    //metodo encargado de editar un registro y poner la portada en estado 0 (cero)
-   assingPortada(id_gi:number)
+   assingPortada(id_gi:number,id_galeria:number)
    {
-    return this.http.get('http://localhost:3000/galeria-portada/'+id_gi)
+    return this.http.get('http://localhost:3000/galeria-portada/'+id_gi+'/'+id_galeria)
    }
 }

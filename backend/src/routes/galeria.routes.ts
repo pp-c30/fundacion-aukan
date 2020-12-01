@@ -15,6 +15,6 @@ enrutadorGaleria.route('/agregar-imagenes-galeria/:id_galeria').put(multer.array
 enrutadorGaleria.route('/galeria-imagenes-detalle/:id_gi/:public_id').delete(galeriacontroller.eliminarimagengaleria);
 enrutadorGaleria.route('/galeriaimg/:id_galeria').delete(galeriacontroller.eliminargaleriaimg);
 enrutadorGaleria.route('/galeriaimg/:id_galeria').put(galeriacontroller.actualizarGaleriaImg);
-enrutadorGaleria.route('/galeria-portada/:id_gi').get(galeriacontroller.establecerPortada);
+enrutadorGaleria.route('/galeria-portada/:id_gi/:id_galeria').get(galeriacontroller.establecerPortada);
 
 export default enrutadorGaleria;

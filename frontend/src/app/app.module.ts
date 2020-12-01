@@ -29,6 +29,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { NgxSpinnerModule } from "ngx-spinner";
 import { DetalleTestimoniosComponent } from './components/detalle-testimonios/detalle-testimonios.component';
+import { GaleriaDetalleComponent } from './components/galeria-detalle/galeria-detalle.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,8 @@ import { DetalleTestimoniosComponent } from './components/detalle-testimonios/de
     AdminTestimoniosComponent,
     AdminActividadesComponent,
     AdminDetalleActividadesComponent,
-    DetalleTestimoniosComponent
+    DetalleTestimoniosComponent,
+    GaleriaDetalleComponent
   ],
   imports: [
     BrowserModule,

@@ -205,6 +205,7 @@ export class Galeriacontroller
     async establecerPortada(req:Request,res:Response)
     {
         let id_gi = req.params.id_gi;
+        let id_galeria = req.params.id_galeria;
 
         const db = await conexion();
 
@@ -212,14 +213,23 @@ export class Galeriacontroller
         const portadasEnEstadoCero = {
             portada:0,
         }
-        await db.query('update imagenes_galeria set ?',[portadasEnEstadoCero])
+        await db.query('update imagenes_galeria set ? where id_galeria = ?',[portadasEnEstadoCero,id_galeria])
 
         //se selecciona una portada cambiando el valor a 1
         const datosImgGaleria = {
             portada:1,
         }
-
         await db.query('update imagenes_galeria set ? where id_gi = ?',[datosImgGaleria,id_gi])
+
+        //se guarda la imagen seleccionada como portada en la tabla galeria
+        const unaFila = await db.query('select * from imagenes_galeria where id_gi = ?',[id_gi])
+        
+        let datosGaleria = {
+            imagen_portada:unaFila[0].imagen_url
+        }
+        //se edita la url en con el dato sacado de iaganes_galeria en galeria
+        await db.query('update galeria set ? where id_galeria = ?',[datosGaleria,id_galeria])
+
 
         res.json('se establecio una portada')
     }

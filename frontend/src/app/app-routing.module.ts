@@ -8,6 +8,8 @@ import { AdminGaleriaComponent } from './components/admin-galeria/admin-galeria.
 import { AdminTestimoniosComponent } from "./components/admin-testimonios/admin-testimonios.component";
 import { DetalleTestimoniosComponent } from './components/detalle-testimonios/detalle-testimonios.component';
 import { TestimoniosComponent } from "./components/testimonios/testimonios.component";
+import { GaleriaComponent } from './components/galeria/galeria.component';
+import { GaleriaDetalleComponent } from './components/galeria-detalle/galeria-detalle.component';
 
 
 const routes: Routes = [
@@ -35,7 +37,12 @@ const routes: Routes = [
     component:DetalleTestimoniosComponent},
   { 
     path: 'admin-detalle-galeria/:id_galeria', component: AdminDetalleGaleriaComponent
-
+  },
+  {
+    path: 'galeria', component: GaleriaComponent
+  },
+  {
+    path: 'galeria-detalle', component: GaleriaDetalleComponent
   }
 
 ];

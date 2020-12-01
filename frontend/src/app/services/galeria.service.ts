@@ -13,7 +13,11 @@ export class GaleriaService {
 
   constructor(private http: HttpClient) {
   }
-
+    updateGaleria(datosGaleria:IGaleria)
+    {
+      let id_galeria = datosGaleria.id_galeria
+      return this.http.put('http://localhost:3000/galeriaimg/'+id_galeria,datosGaleria)
+    }
 
     savegaleria(datosgaleria: IGaleria,files:FileList)
     {
@@ -70,4 +74,10 @@ export class GaleriaService {
      return this.http.delete('http://localhost:3000/galeriaimg/'+id_galeria);
    }
 
+
+   //metodo encargado de editar un registro y poner la portada en estado 0 (cero)
+   assingPortada(id_gi:number)
+   {
+    return this.http.get('http://localhost:3000/galeria-portada/'+id_gi)
+   }
 }

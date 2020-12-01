@@ -10,6 +10,7 @@ import { IHtmlImputEvent } from '../../models/previewGaleria';
 import { NgxSpinnerService } from "ngx-spinner";
 
 import { Router } from "@angular/router";
+import { Igaleria } from '../../../../../backend/src/models/galeria';
 @Component({
   selector: 'app-admin-galeria',
   templateUrl: './admin-galeria.component.html',
@@ -25,9 +26,12 @@ export class AdminGaleriaComponent implements OnInit {
 
   img_url = [];
 
+  ocultar_btnfile:any = "display:block";
+
   constructor(private router:Router, private fb:FormBuilder, private serviceGaleria:GaleriaService,private spinner: NgxSpinnerService ) { 
 
     this.formGaleria = this.fb.group({
+      id_galeria:[null],
       titulo:['',[Validators.required]],
       categoria_gale:['',[Validators.required]],
       fecha:['',[Validators.required]],
@@ -60,19 +64,36 @@ export class AdminGaleriaComponent implements OnInit {
 
   guardarGaleria()
   {
-    this.spinner.show();
-    this.serviceGaleria.savegaleria(this.formGaleria.value,this.archivos).subscribe(
+    if (this.formGaleria.value.id_galeria) 
+    {
+      this.spinner.show()
+      this.serviceGaleria.updateGaleria(this.formGaleria.value).subscribe(
         resultado => {
-          console.log(resultado);
-          this,this.img_url = []
           this.formGaleria.reset();
           this.listaGaleria();
+          this.spinner.hide
+        }
+      )
+    
+    
+    } else {
+      this.spinner.show();
+      this.serviceGaleria.savegaleria(this.formGaleria.value,this.archivos).subscribe(
+          resultado => {
+            console.log(resultado);
+            this,this.img_url = []
+            this.formGaleria.reset();
+            this.listaGaleria();
+  
+            this.spinner.hide();
+          },
+          error => console.log(error)
+          
+      )
 
-          this.spinner.hide();
-        },
-        error => console.log(error)
-        
-    )
+    }
+
+   
   }
 
 
@@ -120,9 +141,34 @@ export class AdminGaleriaComponent implements OnInit {
         }
       )
     }
-    
+  }
 
-    
+  editarGaleria(datosGaleria:IGaleria)
+  {
+    this.ocultar_btnfile ='display:none;'
+
+    this.formGaleria.setValue({
+      id_galeria:datosGaleria.id_galeria,
+      titulo:datosGaleria.titulo,
+      categoria_gale:datosGaleria.categoria_gale,
+      fecha:datosGaleria.fecha,
+      estado:datosGaleria.estado,
+      archivo:''
+    })
+  }
+  vaciarForm()
+  { 
+    this.ocultar_btnfile ='display:block;'
+
+    this.formGaleria.setValue({
+      id_galeria:null,
+      titulo:null,
+      categoria_gale:null,
+      fecha:null,
+      estado:null,
+      archivo:''
+    })
+
   }
 
 

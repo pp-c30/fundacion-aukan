@@ -7,6 +7,8 @@
             <div class="card-body">
                 <form [formGroup]="formGaleria" (ngSubmit)="guardarGaleria()" novalidate>
 
+                    <input formControlName="id_galeria" type="hidden">
+
                     <div class="form-group ">
                         <input formControlName="titulo" placeholder="Ingrese el titulo de la imagen " type="text " class="form-control ">
                     </div>
@@ -23,15 +25,20 @@
                         <input formControlName="estado" placeholder="Ingrese el estado " type="number " class="form-control ">
                     </div>
 
-                    <div class="form-group ">
+                    <div [style]="ocultar_btnfile" class="form-group ">
                         <input (change)="previewGaleria($event)" formControlName="archivo" class="form-control-file " type="file" multiple>
                     </div>
 
-                    <div class="form-group ">
-                        <button [disabled]="formGaleria.invalid " type="button " class="btn btn-success ">Guardar</button>
+                    <div class="btn-group ">
+                        <button [disabled]="formGaleria.invalid " type="button " class="btn btn-success ">Guardar Galeria</button>
+                        <button type="button" (click)="vaciarForm()" type="button " class="btn btn-primary ">Vaciar</button>
                     </div>
+
+                    <br>
+                    <br>
+
                 </form>
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div [style]="ocultar_btnfile" id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
 
                         <div *ngFor=" let url of img_url; let isfirst = first" [ngClass]="{active:isfirst}" class="carousel-item">
@@ -81,8 +88,9 @@
                         <td>{{fila.estado}}</td>
                         <td>
                             <div class="btn-group btn-group-sm">
-                                <button (click)="detalleEvento(fila.id_galeria)" class="btn btn-primary">Ver mas</button>
+                                <button (click)="detalleEvento(fila.id_galeria)" class="btn btn-info">Ver mas</button>
                                 <button (click)="eliminarGaleria(fila.id_galeria)" class="btn btn-danger">Eliminar</button>
+                                <button (click)="editarGaleria(fila)" class="btn btn-primary">Editar</button>
                             </div>
                         </td>
                     </tr>
@@ -95,6 +103,3 @@
     </div>
 
 </div>
-
-
-<ngx-spinner style="color: white;">Cargando...</ngx-spinner>

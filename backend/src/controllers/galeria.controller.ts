@@ -180,4 +180,47 @@ export class Galeriacontroller
 
     }   
 
+
+    async actualizarGaleriaImg(req:Request,res:Response) 
+    {
+        if (!req.files) 
+        {
+
+            const updateGaleria = {
+                titulo:req.body.titulo,
+                categoria_gale:req.body.categoria_gale,
+                fecha:req.body.fecha,
+                estado:req.body.estado
+            }
+            
+            const db = await conexion();
+
+            await db.query('update galeria set ? where id_galeria = ?',[updateGaleria,req.body.id_galeria])
+
+            res.json('se actualizo correctamente')
+        }
+
+    }
+
+    async establecerPortada(req:Request,res:Response)
+    {
+        let id_gi = req.params.id_gi;
+
+        const db = await conexion();
+
+        //primero todas las imagenes pasan a estado cero
+        const portadasEnEstadoCero = {
+            portada:0,
+        }
+        await db.query('update imagenes_galeria set ?',[portadasEnEstadoCero])
+
+        //se selecciona una portada cambiando el valor a 1
+        const datosImgGaleria = {
+            portada:1,
+        }
+
+        await db.query('update imagenes_galeria set ? where id_gi = ?',[datosImgGaleria,id_gi])
+
+        res.json('se establecio una portada')
+    }
 }

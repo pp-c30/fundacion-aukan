@@ -1,1 +1,38 @@
-<p>cat-prevencion works!</p>
+<div class="row">
+
+    <div class="col-lg-7">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Categorias de prevenciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let categoria of listacategorias ">
+                    <td>{{categoria.descripcion}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <div class="col-lg-5">
+
+        <div class="card">
+            <div class="card-header">Añadir prevencion</div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="ingrese la nueva categoria">
+                    </div>
+                    <button class="btn btn-success">Añadir</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -10,6 +10,10 @@ import { DetalleTestimoniosComponent } from './components/detalle-testimonios/de
 import { TestimoniosComponent } from "./components/testimonios/testimonios.component";
 import { GaleriaComponent } from './components/galeria/galeria.component';
 import { GaleriaDetalleComponent } from './components/galeria-detalle/galeria-detalle.component';
+import { CatGaleriaComponent } from './components/cat-galeria/cat-galeria.component';
+import { CatDonacionesComponent } from './components/cat-donaciones/cat-donaciones.component';
+import { CatNoticiasComponent } from './components/cat-noticias/cat-noticias.component';
+import { CatPrevencionComponent } from './components/cat-prevencion/cat-prevencion.component';
 
 
 const routes: Routes = [
@@ -43,6 +47,18 @@ const routes: Routes = [
   },
   {
     path: 'galeria-detalle', component: GaleriaDetalleComponent
+  },
+  {
+    path: 'categoria-galeria', component: CatGaleriaComponent
+  },
+  {
+    path: 'categoria-donaciones', component:CatDonacionesComponent
+  },
+  {
+    path: 'categoria-noticias', component:CatNoticiasComponent
+  },
+  {
+    path: 'categoria-prevencion', component:CatPrevencionComponent
   }
 
 ];

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CatGaleriaService } from '../../services/cat-galeria.service';
+
 @Component({
   selector: 'app-cat-galeria',
   templateUrl: './cat-galeria.component.html',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CatGaleriaComponent implements OnInit {
 
-  constructor() { }
+  listacategorias = [];
+
+
+  constructor(private catgaleriaserv:CatGaleriaService) { }
 
   ngOnInit(): void {
+    this.obtenerCategoriaG();
+  }
+
+  obtenerCategoriaG()
+  {
+    this.catgaleriaserv.getCategoria().subscribe(
+      resultado =>{
+        this.listacategorias = resultado
+      }, error => console.log(error)
+
+    )
   }
 
 }

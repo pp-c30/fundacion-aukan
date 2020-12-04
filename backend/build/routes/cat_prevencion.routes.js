@@ -7,6 +7,6 @@ const enrutadorCatprevencion = express_1.Router();
 enrutadorCatprevencion.route('/catprevencion').get(catprevencionController.listarCatprevencion);
 enrutadorCatprevencion.route('/catprevencion').post(catprevencionController.guardarCatprevencion);
 enrutadorCatprevencion.route('/catprevencion/:id').delete(catprevencionController.eliminarCatprevencion);
-enrutadorCatprevencion.route('catprevencion/:id').put(catprevencionController.actualizarCatprevencion);
+enrutadorCatprevencion.route('/catprevencion/:id').put(catprevencionController.actualizarCatprevencion);
 enrutadorCatprevencion.route('/catprevencion/:id').get(catprevencionController.buscarCatprevencion);
 exports.default = enrutadorCatprevencion;

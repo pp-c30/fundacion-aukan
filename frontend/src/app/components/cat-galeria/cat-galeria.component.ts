@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CatGaleriaService } from '../../services/cat-galeria.service';
+import { FormBuilder,FormGroup } from "@angular/forms";
+import { ICategoriaG } from '../../models/catgaleria';
 
 @Component({
   selector: 'app-cat-galeria',
@@ -11,8 +13,17 @@ export class CatGaleriaComponent implements OnInit {
 
   listacategorias = [];
 
+  formCategoria:FormGroup;
 
-  constructor(private catgaleriaserv:CatGaleriaService) { }
+  constructor(private catgaleriaserv:CatGaleriaService, private fb:FormBuilder) {
+
+    this.formCategoria = this.fb.group({
+      id_cg:[null],
+      descripcion:['']
+    });
+   }
+
+    
 
   ngOnInit(): void {
     this.obtenerCategoriaG();
@@ -28,4 +39,48 @@ export class CatGaleriaComponent implements OnInit {
     )
   }
 
+  guadarCategoria()
+  {
+    if(this.formCategoria.value.id_cg)
+    {
+      this.catgaleriaserv.updatecategoria(this.formCategoria.value).subscribe(
+        respuesta => {
+          console.log(respuesta)
+          this.obtenerCategoriaG();
+          this.formCategoria.reset();
+      }, error => console.log(error)     
+          )
+     }else {
+        //console.log(this.formCategoria.value)
+        this.catgaleriaserv.savecategoria(this.formCategoria.value).subscribe(
+        resultado => {
+          console.log('guardado exitoso')
+          // se refresca la grilla
+          this.obtenerCategoriaG();
+          this.formCategoria.reset();
+
+        }
+    )
+    }
+  }
+
+
+  editarCategoria(categoria:ICategoriaG)
+  {
+    this.formCategoria.setValue(categoria);
+  }
+
+  borrar(id:number)
+  {
+    if(confirm('¿Esta seguro de querer borra la categoria?'))
+    {
+      this.catgaleriaserv.deletecategoria(id).subscribe(
+        resultado => {
+          console.log(resultado);
+          this.obtenerCategoriaG();
+        }, error => console.log(error)
+      )
+    }
+     
+  }
 }

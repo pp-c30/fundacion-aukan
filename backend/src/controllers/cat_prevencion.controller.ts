@@ -19,7 +19,7 @@ export class CatprevencionController{
 
         const catprevencion:ICatprevencion = req.body;
 
-        await db.query('inset into categoria_prevencion set ?', [catprevencion]);
+        await db.query('insert into categoria_prevencion set ?', [catprevencion]);
 
         return res.json('Los datos fueron guardados con exito');
     }

@@ -19,7 +19,7 @@ import { CatPrevencionComponent } from './components/cat-prevencion/cat-prevenci
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/admin-galeria',
+    redirectTo: '/cat-galeria',
     pathMatch: 'full'
   },
   {

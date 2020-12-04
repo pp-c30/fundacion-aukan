@@ -5,12 +5,21 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Categorias agregadas</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let categoria of listacategorias ">
+                    <td>{{categoria.id_cd}}</td>
                     <td>{{categoria.descripcion}}</td>
+                    <td>
+                        <div class="btn-group-sm">
+                            <button (click)="borrar(categoria.id_cd)" class="btn btn-danger">Eliminar</button>
+                            <button (click)="editarCategoria(categoria)" class="btn btn-primary">Editar</button>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
 
@@ -24,9 +33,12 @@
         <div class="card">
             <div class="card-header">Añadir categoria de donacion</div>
             <div class="card-body">
-                <form>
+                <form [formGroup]="formCategoria" (ngSubmit)="guadarCategoria()">
+
+                    <input formControlName="id_cd" type="hidden">
+
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="ingrese la nueva categoria">
+                        <input formControlName="descripcion" type="text" class="form-control" placeholder="ingrese la nueva categoria">
                     </div>
                     <button class="btn btn-success">Añadir</button>
                 </form>

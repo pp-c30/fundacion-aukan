@@ -8,7 +8,9 @@ import { AdminGaleriaComponent } from './components/admin-galeria/admin-galeria.
 import { AdminTestimoniosComponent } from "./components/admin-testimonios/admin-testimonios.component";
 import { DetalleTestimoniosComponent } from './components/detalle-testimonios/detalle-testimonios.component';
 import { TestimoniosComponent } from "./components/testimonios/testimonios.component";
-
+import { AdminNoticiaComponent } from "./components/admin-noticia/admin-noticia.component";
+import { NoticiaComponent } from "./components/noticia/noticia.component";
+import { DetalleNoticiaComponent } from "./components/detalle-noticia/detalle-noticia.component";
 
 const routes: Routes = [
   {
@@ -24,6 +26,10 @@ const routes: Routes = [
     component: AdminTestimoniosComponent
   },
   {
+    path:'admin-noticia',
+    component: AdminNoticiaComponent
+  },
+  {
     path:'testimonios',
     component:TestimoniosComponent
   },
@@ -36,6 +42,14 @@ const routes: Routes = [
   { 
     path: 'admin-detalle-galeria/:id_galeria', component: AdminDetalleGaleriaComponent
 
+  },
+  {
+    path:'noticia',
+    component:NoticiaComponent
+  },
+  {
+    path: 'detalle-noticia/:id',
+    component:DetalleNoticiaComponent
   }
 
 ];

@@ -29,6 +29,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { NgxSpinnerModule } from "ngx-spinner";
 import { DetalleTestimoniosComponent } from './components/detalle-testimonios/detalle-testimonios.component';
+import { AdminNoticiaComponent } from './components/admin-noticia/admin-noticia.component';
+import { DetalleNoticiaComponent } from './components/detalle-noticia/detalle-noticia.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,9 @@ import { DetalleTestimoniosComponent } from './components/detalle-testimonios/de
     AdminTestimoniosComponent,
     AdminActividadesComponent,
     AdminDetalleActividadesComponent,
-    DetalleTestimoniosComponent
+    DetalleTestimoniosComponent,
+    AdminNoticiaComponent,
+    DetalleNoticiaComponent
   ],
   imports: [
     BrowserModule,

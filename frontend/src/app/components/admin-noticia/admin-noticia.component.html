@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col-md-8">
+
+        <table class="table table-striped">
+
+            <thead>
+                <tr>
+                    <th>id_noticia</th>
+                    <th>titulo</th>                    
+                    <th>descripcion</th>
+                    <th>imagen</th>
+                    <th>fecha_hora</th>
+                    <th>categoria</th>
+                    <th>estado</th>
+                    <th>public_id</th>
+                    <th>Operaciones</th>
+                </tr>
+            </thead> 
+            <tbody>
+                <tr *ngFor="let fila of listado_datos_noticia">
+                    <td>{{fila.id_noticia}}</td>
+                    <td>{{fila.titulo}}</td>
+                    <td>{{fila.descripcion}}</td>
+                    <td>
+                        <img style="width: 75px;" class="img-fluid rounded" [src] = "fila.imagen" alt="">
+                    </td>                    
+                    <td>{{fila.fecha_hora}}</td>
+                    <td>{{fila.categoria}}</td>
+                    <td>{{fila.estado}}</td>
+                    <td>{{fila.public_id}}</td>
+                    <td>
+                        <div class="btn-group btn-group-small">
+                            <button class="btn btn-danger" (click)="eliminarNoticia(fila)">Eliminar</button>
+                            <button class="btn btn-primary" (click)="editarNoticia(fila)">Editar</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <div class="card-header">Nuevo registro</div>
+
+        <div class="card-body">
+
+            <form [formGroup]="formNoticia" (ngSubmit)="guardarNoticia()" novalidate>
+                <input formControlName="id_noticia" type="hidden" class="form-control">
+
+                <div class="form-group">
+                    <input formControlName="titulo" placeholder="Ingrese titulo" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <textarea formControlName="descripcion" placeholder="Ingrese descripcion" name="" id="" cols="30" rows="3" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <input (change)="mostrarFotoSeleccionada($event)" formControlName="archivo" class="form-control-file" type="file">
+                </div>
+                <div class="form-group">
+                    <img style="height: 200px ;"  class="img-fluid" [src] ="this.imagenPreview || 'assets/not-found-image.jpg' " alt="">
+                </div> 
+                <div class="form-group">
+                    <input formControlName="categoria" placeholder="Ingrese categoria" type="number" class="form-control">
+                </div>
+                <div class="form-group ">
+                    <input formControlName="fecha_hora" placeholder="AAAA/MM/DD" type="date" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <input formControlName="estado" placeholder="Ingrese estado" type="number" class="form-control">
+                </div>
+                <div class="form-group">
+                    <button [disabled]="formNoticia.invalid" type="submit" class="btn btn-success btn-block">Guardar</button>
+                </div>
+
+
+            </form>
+        </div>
+
+
+
+    </div>
+</div>
+
+<ngx-spinner></ngx-spinner>

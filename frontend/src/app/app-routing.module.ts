@@ -14,12 +14,13 @@ import { CatGaleriaComponent } from './components/cat-galeria/cat-galeria.compon
 import { CatDonacionesComponent } from './components/cat-donaciones/cat-donaciones.component';
 import { CatNoticiasComponent } from './components/cat-noticias/cat-noticias.component';
 import { CatPrevencionComponent } from './components/cat-prevencion/cat-prevencion.component';
+import { CategoriasComponent } from './components/categorias/categorias.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/cat-galeria',
+    redirectTo: '/admin-galeria',
     pathMatch: 'full'
   },
   {
@@ -59,6 +60,9 @@ const routes: Routes = [
   },
   {
     path: 'categoria-prevencion', component:CatPrevencionComponent
+  },
+  {
+    path: 'categorias', component:CategoriasComponent
   }
 
 ];

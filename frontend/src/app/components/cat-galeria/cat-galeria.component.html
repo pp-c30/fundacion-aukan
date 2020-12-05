@@ -11,7 +11,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let categoria of listacategorias ">
+                <tr *ngFor="let categoria of listacategorias | paginate:{itemsPerPage:5, currentPage:p} ">
                     <td>{{categoria.id_cg}}</td>
                     <td>{{categoria.descripcion}}</td>
                     <td>
@@ -24,7 +24,11 @@
             </tbody>
 
         </table>
-
+        <div class="row">
+            <div class="col-sm-4">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
     </div>
 
 
@@ -38,9 +42,12 @@
                     <input formControlName="id_cg" type="hidden">
 
                     <div class="form-group">
-                        <input formControlName="descripcion" type="text" class="form-control" placeholder="ingrese la nueva categoria">
+                        <input [ngClass]="{'is-invalid':formCategoria.get('descripcion')?.touched}" formControlName="descripcion" type="text" class="form-control" placeholder="ingrese la nueva categoria">
+                        <div class="invalid-feedback">
+                            <span *ngIf="formCategoria.get('descripcion').hasError('required')">Campo obligatorio</span>
+                        </div>
                     </div>
-                    <button class="btn btn-success">Añadir</button>
+                    <button [disabled]="formCategoria.invalid" class="btn btn-success">Añadir</button>
                 </form>
             </div>
         </div>

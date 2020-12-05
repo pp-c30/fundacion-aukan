@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CatPrevencionService } from '../../services/cat-prevencion.service';
-import { FormBuilder,FormGroup } from "@angular/forms";
+import { FormBuilder,FormGroup,Validators } from "@angular/forms";
 import { ICategoriaP } from '../../models/catprevencion';
 
 @Component({
@@ -15,11 +15,13 @@ export class CatPrevencionComponent implements OnInit {
 
   formCategoria:FormGroup;
 
+  p:number = 1;
+
   constructor(private catprevencionserv:CatPrevencionService, private fb:FormBuilder) { 
     
     this.formCategoria = this.fb.group({
       id_cp:[null],
-      descripcion:['']
+      descripcion:['',[Validators.required]]
     });
   }
 

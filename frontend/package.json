@@ -21,6 +21,7 @@
     "@angular/router": "~10.2.0",
     "bootswatch": "^4.5.3",
     "jquery": "^3.5.1",
+    "ngx-pagination": "^5.0.0",
     "ngx-spinner": "^10.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

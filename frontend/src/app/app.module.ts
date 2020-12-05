@@ -31,6 +31,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { DetalleTestimoniosComponent } from './components/detalle-testimonios/detalle-testimonios.component';
 import { GaleriaDetalleComponent } from './components/galeria-detalle/galeria-detalle.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
+import { NgxPaginationModule } from "ngx-pagination";
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +64,8 @@ import { CategoriasComponent } from './components/categorias/categorias.componen
     FormsModule,
     ReactiveFormsModule,
     ReactiveFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

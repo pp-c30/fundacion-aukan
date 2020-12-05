@@ -10,7 +10,7 @@ import { IHtmlImputEvent } from '../../models/previewGaleria';
 import { NgxSpinnerService } from "ngx-spinner";
 
 import { Router } from "@angular/router";
-import { Igaleria } from '../../../../../backend/src/models/galeria';
+
 @Component({
   selector: 'app-admin-galeria',
   templateUrl: './admin-galeria.component.html',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CatGaleriaService } from '../../services/cat-galeria.service';
-import { FormBuilder,FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ICategoriaG } from '../../models/catgaleria';
 
 @Component({
@@ -15,11 +15,13 @@ export class CatGaleriaComponent implements OnInit {
 
   formCategoria:FormGroup;
 
+  p:number = 1;
+
   constructor(private catgaleriaserv:CatGaleriaService, private fb:FormBuilder) {
 
     this.formCategoria = this.fb.group({
       id_cg:[null],
-      descripcion:['']
+      descripcion:['',[Validators.required]]
     });
    }
 

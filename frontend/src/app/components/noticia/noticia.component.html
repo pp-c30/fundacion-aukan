@@ -1,1 +1,11 @@
-<p>noticia works!</p>
+<div class="row">
+    <div *ngFor ="let fila of lista_datos" class="col-lg-4">
+        <div class="card">
+            <img class="card-img-top" [src]="fila.imagen" alt="" style="height: 200px;">
+            <div class="card-body">
+                <h4 clas="card-title">{{fila.titulo}}</h4>
+                <button (click)="verDetalle(fila.id_noticia)" class="btn btn-primary btn-sm">Ver mas</button>
+            </div>
+        </div>
+    </div>
+</div>

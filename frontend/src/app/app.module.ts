@@ -29,6 +29,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { NgxSpinnerModule } from "ngx-spinner";
 import { DetalleTestimoniosComponent } from './components/detalle-testimonios/detalle-testimonios.component';
+
+import { AdminNoticiaComponent } from './components/admin-noticia/admin-noticia.component';
+import { DetalleNoticiaComponent } from './components/detalle-noticia/detalle-noticia.component';
+
 import { GaleriaDetalleComponent } from './components/galeria-detalle/galeria-detalle.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
 import { NgxPaginationModule } from "ngx-pagination";
@@ -54,6 +58,8 @@ import { NgxPaginationModule } from "ngx-pagination";
     AdminActividadesComponent,
     AdminDetalleActividadesComponent,
     DetalleTestimoniosComponent,
+    AdminNoticiaComponent,
+    DetalleNoticiaComponent,
     GaleriaDetalleComponent,
     CategoriasComponent
   ],

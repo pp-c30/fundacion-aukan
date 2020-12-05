@@ -8,6 +8,9 @@ import { AdminGaleriaComponent } from './components/admin-galeria/admin-galeria.
 import { AdminTestimoniosComponent } from "./components/admin-testimonios/admin-testimonios.component";
 import { DetalleTestimoniosComponent } from './components/detalle-testimonios/detalle-testimonios.component';
 import { TestimoniosComponent } from "./components/testimonios/testimonios.component";
+import { AdminNoticiaComponent } from "./components/admin-noticia/admin-noticia.component";
+import { NoticiaComponent } from "./components/noticia/noticia.component";
+import { DetalleNoticiaComponent } from "./components/detalle-noticia/detalle-noticia.component";
 import { GaleriaComponent } from './components/galeria/galeria.component';
 import { GaleriaDetalleComponent } from './components/galeria-detalle/galeria-detalle.component';
 import { CatGaleriaComponent } from './components/cat-galeria/cat-galeria.component';
@@ -31,6 +34,10 @@ const routes: Routes = [
     component: AdminTestimoniosComponent
   },
   {
+    path:'admin-noticia',
+    component: AdminNoticiaComponent
+  },
+  {
     path:'testimonios',
     component:TestimoniosComponent
   },
@@ -42,6 +49,15 @@ const routes: Routes = [
     component:DetalleTestimoniosComponent},
   { 
     path: 'admin-detalle-galeria/:id_galeria', component: AdminDetalleGaleriaComponent
+
+  },
+  {
+    path:'noticia',
+    component:NoticiaComponent
+  },
+  {
+    path: 'detalle-noticia/:id',
+    component:DetalleNoticiaComponent
   },
   {
     path: 'galeria', component: GaleriaComponent

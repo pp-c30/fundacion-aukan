@@ -18,7 +18,7 @@
                     <td>
                         <div class="btn-group">
                             <button (click)="eliminarImgGaleria(fila.id_gi,fila.public_id) " class="btn btn-danger">Eliminar</button>
-                            <button [disabled]="fila.portada == 1 ? true:false" (click)="establecerPortada(fila.id_gi)" class="btn btn-primary">Establecer como portada</button>
+                            <button [disabled]="fila.portada == 1 ? true:false" (click)="establecerPortada(fila.id_gi,fila.id_galeria)" class="btn btn-primary">Establecer como portada</button>
                         </div>
                     </td>
                 </tr>

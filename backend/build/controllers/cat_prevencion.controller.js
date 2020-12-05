@@ -23,7 +23,7 @@ class CatprevencionController {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             const catprevencion = req.body;
-            yield db.query('inset into categoria_prevencion set ?', [catprevencion]);
+            yield db.query('insert into categoria_prevencion set ?', [catprevencion]);
             return res.json('Los datos fueron guardados con exito');
         });
     }

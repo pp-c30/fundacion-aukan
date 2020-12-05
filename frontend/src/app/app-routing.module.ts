@@ -11,6 +11,14 @@ import { TestimoniosComponent } from "./components/testimonios/testimonios.compo
 import { AdminNoticiaComponent } from "./components/admin-noticia/admin-noticia.component";
 import { NoticiaComponent } from "./components/noticia/noticia.component";
 import { DetalleNoticiaComponent } from "./components/detalle-noticia/detalle-noticia.component";
+import { GaleriaComponent } from './components/galeria/galeria.component';
+import { GaleriaDetalleComponent } from './components/galeria-detalle/galeria-detalle.component';
+import { CatGaleriaComponent } from './components/cat-galeria/cat-galeria.component';
+import { CatDonacionesComponent } from './components/cat-donaciones/cat-donaciones.component';
+import { CatNoticiasComponent } from './components/cat-noticias/cat-noticias.component';
+import { CatPrevencionComponent } from './components/cat-prevencion/cat-prevencion.component';
+import { CategoriasComponent } from './components/categorias/categorias.component';
+
 
 const routes: Routes = [
   {
@@ -50,6 +58,27 @@ const routes: Routes = [
   {
     path: 'detalle-noticia/:id',
     component:DetalleNoticiaComponent
+  },
+  {
+    path: 'galeria', component: GaleriaComponent
+  },
+  {
+    path: 'galeria-detalle', component: GaleriaDetalleComponent
+  },
+  {
+    path: 'categoria-galeria', component: CatGaleriaComponent
+  },
+  {
+    path: 'categoria-donaciones', component:CatDonacionesComponent
+  },
+  {
+    path: 'categoria-noticias', component:CatNoticiasComponent
+  },
+  {
+    path: 'categoria-prevencion', component:CatPrevencionComponent
+  },
+  {
+    path: 'categorias', component:CategoriasComponent
   }
 
 ];

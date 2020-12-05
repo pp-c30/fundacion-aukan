@@ -1,1 +1,50 @@
-<p>cat-noticias works!</p>
+<div class="row">
+
+    <div class="col-lg-7">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Categorias de las noticias</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let categoria of listacategorias ">
+                    <td>{{categoria.id_cn}}</td>
+                    <td>{{categoria.descripcion}}</td>
+                    <td>
+                        <div class="btn-group-sm">
+                            <button (click)="borrar(categoria.id_cn)" class="btn btn-danger">Eliminar</button>
+                            <button (click)="editarCategoria(categoria)" class="btn btn-primary">Editar</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <div class="col-lg-5">
+
+        <div class="card">
+            <div class="card-header">Añadir categoria de la noticia</div>
+            <div class="card-body">
+                <form [formGroup]="formCategoria" (ngSubmit)="guadarCategoria()">
+
+                    <input formControlName="id_cn" type="hidden">
+
+                    <div class="form-group">
+                        <input formControlName="descripcion" type="text" class="form-control" placeholder="ingrese la nueva categoria">
+                    </div>
+                    <button class="btn btn-success">Añadir</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -151,17 +151,25 @@ class Galeriacontroller {
     establecerPortada(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let id_gi = req.params.id_gi;
+            let id_galeria = req.params.id_galeria;
             const db = yield database_1.conexion();
             //primero todas las imagenes pasan a estado cero
             const portadasEnEstadoCero = {
                 portada: 0,
             };
-            yield db.query('update imagenes_galeria set ?', [portadasEnEstadoCero]);
+            yield db.query('update imagenes_galeria set ? where id_galeria = ?', [portadasEnEstadoCero, id_galeria]);
             //se selecciona una portada cambiando el valor a 1
             const datosImgGaleria = {
                 portada: 1,
             };
             yield db.query('update imagenes_galeria set ? where id_gi = ?', [datosImgGaleria, id_gi]);
+            //se guarda la imagen seleccionada como portada en la tabla galeria
+            const unaFila = yield db.query('select * from imagenes_galeria where id_gi = ?', [id_gi]);
+            let datosGaleria = {
+                imagen_portada: unaFila[0].imagen_url
+            };
+            //se edita la url en con el dato sacado de iaganes_galeria en galeria
+            yield db.query('update galeria set ? where id_galeria = ?', [datosGaleria, id_galeria]);
             res.json('se establecio una portada');
         });
     }

@@ -29,7 +29,7 @@ export class AdminNoticiaComponent implements OnInit {
     this.formNoticia = this.fb.group({
       id_noticia:[''],
       titulo:['',[Validators.required,Validators.minLength(3)]],
-      descripcion:['',[Validators.required,Validators.minLength]],
+      descripcion:['',[Validators.required]],
       archivo:['',[Validators.required]],
       fecha_hora:['',[Validators.required]],
       categoria:['',[Validators.required]],

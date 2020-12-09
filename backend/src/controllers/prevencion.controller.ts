@@ -51,6 +51,9 @@ export class PrevencionController{
         const db = await conexion();
 
         let id = req.params.id;
+        let public_id = req.params.public_id;
+
+        await cloudinary.v2.uploader.destroy(public_id);
 
         await db.query('delete from prevencion where id_prevencion = ?', [id]);
 
@@ -60,15 +63,40 @@ export class PrevencionController{
 
     public async actualizarPrevencion(req:Request,res:Response){
 
-        const db = await conexion();
+        try {
+            const db = await conexion();
+            let id= req.params.id;
+            var updatePrevencion;
+            var public_id_anterior = req.body.public_id;
 
-        let id= req.params.id;
+            if(req.file){
+                //se sube imagen a cloudinary y se genera public_id
+                const resultado_cloud = await cloudinary.v2.uploader.upload(req.file.path);
+                updatePrevencion = {
+                    titulo:req.body.titulo,
+                    descripcion:req.body.descripcion,
+                    imagen:resultado_cloud.url,
+                    categoria_prev:req.body.categoria_prev,
+                    estado:req.body.estado,
+                    public_id:resultado_cloud.public_id
+                }
+                await db.query('update prevencion set ? where id_prevencion = ?', [updatePrevencion,id]);
 
-        let prevencionActualizada = req.body;
-
-        await db.query('update prevencion set ? where id_prevencion = ?', [prevencionActualizada,id]);
-
-        return res.json('Los datos fueron actualizados con exito');
+                fs.unlink(req.file.path);
+                await cloudinary.v2.uploader.destroy(public_id_anterior);
+            }else{
+                updatePrevencion = {
+                    titulo:req.body.titulo,
+                    descripcion:req.body.descripcion,
+                    categoria_prev:req.body.categoria_prev,
+                    estado:req.body.estado
+                }
+                await db.query('update prevencion set ? where id_prevencion = ?', [updatePrevencion,id]);
+            }
+            res.json('Se actualizo exitosamente');
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     public async buscarPrevencion(req:Request,res:Response){

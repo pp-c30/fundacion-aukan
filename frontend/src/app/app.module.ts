@@ -36,6 +36,7 @@ import { DetalleNoticiaComponent } from './components/detalle-noticia/detalle-no
 import { GaleriaDetalleComponent } from './components/galeria-detalle/galeria-detalle.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
 import { NgxPaginationModule } from "ngx-pagination";
+import { AdminPrevencionComponent } from './components/admin-prevencion/admin-prevencion.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +62,8 @@ import { NgxPaginationModule } from "ngx-pagination";
     AdminNoticiaComponent,
     DetalleNoticiaComponent,
     GaleriaDetalleComponent,
-    CategoriasComponent
+    CategoriasComponent,
+    AdminPrevencionComponent
   ],
   imports: [
     BrowserModule,

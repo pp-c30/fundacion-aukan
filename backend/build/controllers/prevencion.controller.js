@@ -52,17 +52,48 @@ class PrevencionController {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             let id = req.params.id;
+            let public_id = req.params.public_id;
+            yield cloudinary_1.default.v2.uploader.destroy(public_id);
             yield db.query('delete from prevencion where id_prevencion = ?', [id]);
             return res.json('Los datos fueron eliminados con exito');
         });
     }
     actualizarPrevencion(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const db = yield database_1.conexion();
-            let id = req.params.id;
-            let prevencionActualizada = req.body;
-            yield db.query('update prevencion set ? where id_prevencion = ?', [prevencionActualizada, id]);
-            return res.json('Los datos fueron actualizados con exito');
+            try {
+                const db = yield database_1.conexion();
+                let id = req.params.id;
+                var updatePrevencion;
+                var public_id_anterior = req.body.public_id;
+                if (req.file) {
+                    //se sube imagen a cloudinary y se genera public_id
+                    const resultado_cloud = yield cloudinary_1.default.v2.uploader.upload(req.file.path);
+                    updatePrevencion = {
+                        titulo: req.body.titulo,
+                        descripcion: req.body.descripcion,
+                        imagen: resultado_cloud.url,
+                        categoria_prev: req.body.categoria_prev,
+                        estado: req.body.estado,
+                        public_id: resultado_cloud.public_id
+                    };
+                    yield db.query('update prevencion set ? where id_prevencion = ?', [updatePrevencion, id]);
+                    fs_extra_1.default.unlink(req.file.path);
+                    yield cloudinary_1.default.v2.uploader.destroy(public_id_anterior);
+                }
+                else {
+                    updatePrevencion = {
+                        titulo: req.body.titulo,
+                        descripcion: req.body.descripcion,
+                        categoria_prev: req.body.categoria_prev,
+                        estado: req.body.estado
+                    };
+                    yield db.query('update prevencion set ? where id_prevencion = ?', [updatePrevencion, id]);
+                }
+                res.json('Se actualizo exitosamente');
+            }
+            catch (error) {
+                console.error(error);
+            }
         });
     }
     buscarPrevencion(req, res) {

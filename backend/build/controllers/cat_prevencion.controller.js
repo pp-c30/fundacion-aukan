@@ -31,8 +31,13 @@ class CatprevencionController {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             let id = req.params.id;
-            yield db.query('delete from categoria_prevencion where id_cp = ?', [id]);
-            return res.json('Los datos fueron eliminados con exito');
+            try {
+                yield db.query('delete from categoria_prevencion where id_cp = ?', [id]);
+                return res.json('Los datos fueron eliminados con exito');
+            }
+            catch (error) {
+                return res.json("No se pudo eliminar esta categoria por que esta siendo utilizada");
+            }
         });
     }
     actualizarCatprevencion(req, res) {

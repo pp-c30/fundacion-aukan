@@ -31,9 +31,14 @@ export class Catgaleriacontroller
 
         let id = req.params.id;
 
-        await db.query('delete from categoria_galeria where id_cg =?',id);
+        try {
+            await db.query('delete from categoria_galeria where id_cg =?',id);
+            return res.json("se elimino la categoria")
 
-        return res.json("los datos se eliminaron exitosamente");
+        } catch (error) {
+           return res.json("No se pudo eliminar esta categoria por que esta siendo utilizada")
+        }
+
     }
 
     public async actualizarcatgaleria(req:Request, res:Response)

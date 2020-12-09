@@ -31,9 +31,16 @@ export class Catnoticiacontroller
 
         let id = req.params.id;
 
-        await db.query('delete from categoria_noticia where id_cn =?',id);
+        try {
+            await db.query('delete from categoria_noticia where id_cn =?',id);
+            return res.json("los datos se eliminaron exitosamente");
+        } catch (error) {
+            return res.json("No se pudo eliminar esta categoria por que esta siendo utilizada")
+        }
 
-        return res.json("los datos se eliminaron exitosamente");
+        
+
+        
     }
 
     public async actualizarcatnoticia(req:Request, res:Response)

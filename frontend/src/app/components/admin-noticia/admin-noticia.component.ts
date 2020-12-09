@@ -6,6 +6,10 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 import {NgxSpinnerService } from "ngx-spinner";
 
+import { CatNoticiasService } from "../../services/cat-noticias.service";
+
+import { ICategoriaN } from "../../models/catnoticias";
+
 interface HtmlInputEvent{
   target:HTMLInputElement & EventTarget;
 }
@@ -25,20 +29,23 @@ export class AdminNoticiaComponent implements OnInit {
 
   imagenPreview:string | ArrayBuffer;
 
-  constructor(private serNoticia:NoticiaService, private fb:FormBuilder, private spinner:NgxSpinnerService) { 
+  listar_categoria:ICategoriaN[] = [];
+
+  constructor(private serNoticia:NoticiaService, private fb:FormBuilder, private spinner:NgxSpinnerService, private catnoticiaservice:CatNoticiasService) { 
     this.formNoticia = this.fb.group({
       id_noticia:[''],
       titulo:['',[Validators.required,Validators.minLength(3)]],
       descripcion:['',[Validators.required]],
       archivo:['',[Validators.required]],
       fecha_hora:['',[Validators.required]],
-      categoria:['',[Validators.required]],
+      categoria:[null],
       estado:['',[Validators.required]] 
     });
   }
 
   ngOnInit(): void {
     this.listarNoticia();
+    this.obtenercategoria();
   }
 
   eliminarNoticia(fila:INoticia){
@@ -136,4 +143,13 @@ export class AdminNoticiaComponent implements OnInit {
 
   }
 
+  obtenercategoria()
+  {
+    this.catnoticiaservice.getCategoria().subscribe(
+      resultado => {
+        this.listar_categoria = resultado;
+      }, error => console.log(error)
+    )
+
+  }
 }

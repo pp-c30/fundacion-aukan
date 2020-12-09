@@ -31,6 +31,14 @@ export class Catdonacionescontroller
 
         let id = req.params.id;
 
+        try {
+        await db.query('delete from categoria_donaciones where id_cd =?',id);
+        return res.json("los datos se eliminaron exitosamente");
+            
+        } catch (error) {
+            return res.json("No se pudo eliminar esta categoria por que esta siendo utilizada")
+        }
+
         await db.query('delete from categoria_donaciones where id_cd =?',id);
 
         return res.json("los datos se eliminaron exitosamente");

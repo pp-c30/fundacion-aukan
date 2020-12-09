@@ -11,6 +11,10 @@ import { NgxSpinnerService } from "ngx-spinner";
 
 import { Router } from "@angular/router";
 
+import { CatGaleriaService } from "../../services/cat-galeria.service";
+
+import { ICategoriaG } from '../../models/catgaleria';
+
 @Component({
   selector: 'app-admin-galeria',
   templateUrl: './admin-galeria.component.html',
@@ -26,30 +30,25 @@ export class AdminGaleriaComponent implements OnInit {
 
   img_url = [];
 
+  listar_categoria:ICategoriaG[] = [];
+
   ocultar_btnfile:any = "display:block";
 
-  constructor(private router:Router, private fb:FormBuilder, private serviceGaleria:GaleriaService,private spinner: NgxSpinnerService ) { 
+  constructor(private router:Router, private fb:FormBuilder, private serviceGaleria:GaleriaService,private spinner: NgxSpinnerService,private servicecatgaleria:CatGaleriaService ) { 
 
     this.formGaleria = this.fb.group({
       id_galeria:[null],
       titulo:['',[Validators.required]],
-      categoria_gale:['',[Validators.required]],
+      categoria_gale:[null],
       fecha:['',[Validators.required]],
       estado:['',[Validators.required]],
       archivo:['']
-
-
-
     })
-
-
-
   }
-
-
 
   ngOnInit(): void {
     this.listaGaleria();
+    this.obtenercategoria();
   }
 
   listaGaleria()
@@ -87,17 +86,10 @@ export class AdminGaleriaComponent implements OnInit {
   
             this.spinner.hide();
           },
-          error => console.log(error)
-          
+          error => console.log(error)   
       )
-
     }
-
-   
   }
-
-
-
   previewGaleria(galeria:IHtmlImputEvent)
   {
       this.img_url = []
@@ -168,6 +160,16 @@ export class AdminGaleriaComponent implements OnInit {
       estado:null,
       archivo:''
     })
+  }
+
+
+  obtenercategoria()
+  {
+    this.servicecatgaleria.getCategoria().subscribe(
+      resultado => {
+        this.listar_categoria = resultado;
+      }, error => console.log(error)
+    )
 
   }
 

@@ -31,8 +31,13 @@ class Catgaleriacontroller {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             let id = req.params.id;
-            yield db.query('delete from categoria_galeria where id_cg =?', id);
-            return res.json("los datos se eliminaron exitosamente");
+            try {
+                yield db.query('delete from categoria_galeria where id_cg =?', id);
+                return res.json("se elimino la categoria");
+            }
+            catch (error) {
+                return res.json("No se pudo eliminar esta categoria por que esta siendo utilizada");
+            }
         });
     }
     actualizarcatgaleria(req, res) {

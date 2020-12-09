@@ -6,7 +6,7 @@
             <thead>
                 <tr>
                     <th>id_noticia</th>
-                    <th>titulo</th>                    
+                    <th>titulo</th>
                     <th>descripcion</th>
                     <th>imagen</th>
                     <th>fecha_hora</th>
@@ -15,15 +15,15 @@
                     <th>public_id</th>
                     <th>Operaciones</th>
                 </tr>
-            </thead> 
+            </thead>
             <tbody>
                 <tr *ngFor="let fila of listado_datos_noticia">
                     <td>{{fila.id_noticia}}</td>
                     <td>{{fila.titulo}}</td>
                     <td>{{fila.descripcion}}</td>
                     <td>
-                        <img style="width: 75px;" class="img-fluid rounded" [src] = "fila.imagen" alt="">
-                    </td>                    
+                        <img style="width: 75px;" class="img-fluid rounded" [src]="fila.imagen" alt="">
+                    </td>
                     <td>{{fila.fecha_hora}}</td>
                     <td>{{fila.categoria}}</td>
                     <td>{{fila.estado}}</td>
@@ -56,11 +56,16 @@
                     <input (change)="mostrarFotoSeleccionada($event)" formControlName="archivo" class="form-control-file" type="file">
                 </div>
                 <div class="form-group">
-                    <img style="height: 200px ;"  class="img-fluid" [src] ="this.imagenPreview || 'assets/not-found-image.jpg' " alt="">
-                </div> 
-                <div class="form-group">
-                    <input formControlName="categoria" placeholder="Ingrese categoria" type="number" class="form-control">
+                    <img style="height: 200px ;" class="img-fluid" [src]="this.imagenPreview || 'assets/not-found-image.jpg' " alt="">
                 </div>
+
+                <div class="form-group ">
+                    <select class="form-control">
+                        <option value="0" disabled>Seleccionar categoria</option>
+                        <option *ngFor="let categoria of listar_categoria" value="{{categoria.id_cn}}">{{categoria.descripcion}}</option>
+                    </select>
+                </div>
+
                 <div class="form-group ">
                     <input formControlName="fecha_hora" placeholder="AAAA/MM/DD" type="date" class="form-control">
                 </div>

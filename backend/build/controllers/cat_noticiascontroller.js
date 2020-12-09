@@ -32,8 +32,13 @@ class Catnoticiacontroller {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
             let id = req.params.id;
-            yield db.query('delete from categoria_noticia where id_cn =?', id);
-            return res.json("los datos se eliminaron exitosamente");
+            try {
+                yield db.query('delete from categoria_noticia where id_cn =?', id);
+                return res.json("los datos se eliminaron exitosamente");
+            }
+            catch (error) {
+                return res.json("No se pudo eliminar esta categoria por que esta siendo utilizada");
+            }
         });
     }
     actualizarcatnoticia(req, res) {

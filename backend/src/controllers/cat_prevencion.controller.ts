@@ -30,9 +30,16 @@ export class CatprevencionController{
 
         let id = req.params.id;
 
-        await db.query('delete from categoria_prevencion where id_cp = ?', [id]);
+        try {
+            await db.query('delete from categoria_prevencion where id_cp = ?', [id]);
+            return res.json('Los datos fueron eliminados con exito');
+        } catch (error) {
+            return res.json("No se pudo eliminar esta categoria por que esta siendo utilizada")
+        }
 
-        return res.json('Los datos fueron eliminados con exito');
+       
+
+        
 
     }
 

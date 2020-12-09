@@ -14,7 +14,10 @@
                     </div>
 
                     <div class="form-group ">
-                        <input formControlName="categoria_gale" placeholder="Ingrese la categoria " type="number " class="form-control ">
+                        <select class="form-control">
+                            <option value="0" disabled>Seleccionar categoria</option>
+                            <option *ngFor="let categoria of listar_categoria" value="{{categoria.id_cg}}">{{categoria.descripcion}}</option>
+                        </select>
                     </div>
 
                     <div class="form-group ">

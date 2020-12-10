@@ -18,7 +18,8 @@ import { CatDonacionesComponent } from './components/cat-donaciones/cat-donacion
 import { CatNoticiasComponent } from './components/cat-noticias/cat-noticias.component';
 import { CatPrevencionComponent } from './components/cat-prevencion/cat-prevencion.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
-
+import { PrevencionComponent } from "./components/prevencion/prevencion.component";
+import { AdminPrevencionComponent } from "./components/admin-prevencion/admin-prevencion.component";
 
 const routes: Routes = [
   {
@@ -79,6 +80,14 @@ const routes: Routes = [
   },
   {
     path: 'categorias', component:CategoriasComponent
+  },
+  {
+    path:'prevencion',
+    component:PrevencionComponent
+  },
+  {
+    path:'admin-prevencion',
+    component:AdminPrevencionComponent
   }
 
 ];

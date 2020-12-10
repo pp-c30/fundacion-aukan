@@ -90,6 +90,8 @@ export class AdminGaleriaComponent implements OnInit {
       )
     }
   }
+
+  //este metodo se encarga de mostrar las imagenes seleccionadas antes de subirlas
   previewGaleria(galeria:IHtmlImputEvent)
   {
       this.img_url = []
@@ -124,7 +126,7 @@ export class AdminGaleriaComponent implements OnInit {
 
   eliminarGaleria(id_galeria:number)
   {
-    if(confirm('esta sewguro de eliminar esta coleccion de imagenes?'))
+    if(confirm('esta seguro de eliminar esta coleccion de imagenes?'))
     {
       this.serviceGaleria.deleteGaleria(id_galeria).subscribe(
         resultado=>{

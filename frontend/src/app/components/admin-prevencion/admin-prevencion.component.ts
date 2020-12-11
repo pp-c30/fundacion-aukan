@@ -3,6 +3,8 @@ import { IPrevencion } from "../../models/prevencion";
 import { PrevencionService } from "../../services/prevencion.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import {NgxSpinnerService } from "ngx-spinner";
+import { CatPrevencionService } from "../../services/cat-prevencion.service";
+import { ICategoriaP } from '../../models/catprevencion';
 
 interface HtmlInputEvent{
   target:HTMLInputElement & EventTarget;
@@ -23,14 +25,16 @@ export class AdminPrevencionComponent implements OnInit {
 
   imagenPreview:string | ArrayBuffer;
 
-  constructor(private serPrevencion:PrevencionService, private fb:FormBuilder, private spinner:NgxSpinnerService) { 
+  listar_categoria:ICategoriaP[] = [];
+
+  constructor(private serPrevencion:PrevencionService, private fb:FormBuilder, private spinner:NgxSpinnerService, private catprevservice:CatPrevencionService) { 
 
     this.formPrevencion = this.fb.group({
       id_prevencion:[''],
       titulo:['',[Validators.required,Validators.minLength(3)]],
       descripcion:['',[Validators.required]],
       archivo:['',[Validators.required]],
-      categoria_prev:['',[Validators.required]],
+      categoria_prev:[null],
       estado:['',[Validators.required]] 
     });
   }
@@ -69,7 +73,6 @@ export class AdminPrevencionComponent implements OnInit {
       this.serPrevencion.savePrevencion(this.formPrevencion.value,this.file).subscribe(
         resultado => {
           console.log(resultado);
-          
           this.imagenPreview = '';
           this.formPrevencion.reset();
           this.listarPrevencion();
@@ -128,5 +131,15 @@ export class AdminPrevencionComponent implements OnInit {
       reader.readAsDataURL(this.file)
     }
   }
+  obtenercategoria()
+  {
+    this.catprevservice.getCategoria().subscribe(
+      resultado => {
+        this.listar_categoria = resultado;
+      }, error => console.log(error)
+    )
+
+  }
+
 
 }

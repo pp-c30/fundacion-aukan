@@ -101,7 +101,7 @@ export class AdminGaleriaComponent implements OnInit {
       if(this.archivos)
       {
         for (let index = 0; index < this.archivos.length; index++) {
-       
+        
             const reader = new FileReader();
 
 

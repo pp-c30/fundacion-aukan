@@ -21,11 +21,12 @@ export class GaleriaService {
 
     savegaleria(datosgaleria: IGaleria,files:FileList)
     {
+      let fecha = datosgaleria.fecha.year+'-'+datosgaleria.fecha.month+'-'+datosgaleria.fecha.day;
       const fd = new FormData();
 
       fd.append('titulo', datosgaleria.titulo);
       fd.append('categoria_gale', datosgaleria.categoria_gale);
-      fd.append('fecha', datosgaleria.fecha);
+      fd.append('fecha', fecha);
       fd.append('estado', datosgaleria.estado);
 
 

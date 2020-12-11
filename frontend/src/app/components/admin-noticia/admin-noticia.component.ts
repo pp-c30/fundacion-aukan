@@ -33,7 +33,7 @@ export class AdminNoticiaComponent implements OnInit {
 
   constructor(private serNoticia:NoticiaService, private fb:FormBuilder, private spinner:NgxSpinnerService, private catnoticiaservice:CatNoticiasService) { 
     this.formNoticia = this.fb.group({
-      id_noticia:[''],
+      id_noticia:[null],
       titulo:['',[Validators.required,Validators.minLength(3)]],
       descripcion:['',[Validators.required]],
       archivo:['',[Validators.required]],

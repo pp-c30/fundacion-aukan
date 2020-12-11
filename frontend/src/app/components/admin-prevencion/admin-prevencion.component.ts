@@ -3,6 +3,7 @@ import { IPrevencion } from "../../models/prevencion";
 import { PrevencionService } from "../../services/prevencion.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import {NgxSpinnerService } from "ngx-spinner";
+import { CatPrevencionService } from "../../services/cat-prevencion.service";
 
 interface HtmlInputEvent{
   target:HTMLInputElement & EventTarget;
@@ -23,15 +24,15 @@ export class AdminPrevencionComponent implements OnInit {
 
   imagenPreview:string | ArrayBuffer;
 
-  constructor(private serPrevencion:PrevencionService, private fb:FormBuilder, private spinner:NgxSpinnerService) { 
+  constructor(private serPrevencion:PrevencionService, private fb:FormBuilder, private spinner:NgxSpinnerService, private serviceCatPrevencion:CatPrevencionService) { 
 
     this.formPrevencion = this.fb.group({
-      id_prevencion:[''],
+      id_prevencion:[null],
       titulo:['',[Validators.required,Validators.minLength(3)]],
       descripcion:['',[Validators.required]],
       archivo:['',[Validators.required]],
-      categoria_prev:['',[Validators.required]],
-      estado:['',[Validators.required]] 
+      categoria_prev:[null],
+      estado:[null,[Validators.required]] 
     });
   }
 

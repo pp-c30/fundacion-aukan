@@ -30,7 +30,7 @@ export class AdminPrevencionComponent implements OnInit {
   constructor(private serPrevencion:PrevencionService, private fb:FormBuilder, private spinner:NgxSpinnerService, private catprevservice:CatPrevencionService) { 
 
     this.formPrevencion = this.fb.group({
-      id_prevencion:[''],
+      id_prevencion:[null],
       titulo:['',[Validators.required,Validators.minLength(3)]],
       descripcion:['',[Validators.required]],
       archivo:['',[Validators.required]],
@@ -41,6 +41,7 @@ export class AdminPrevencionComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarPrevencion();
+    this.obtenercategoria();
   }
 
   listarPrevencion(){

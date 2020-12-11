@@ -30,12 +30,12 @@ export class AdminTestimoniosComponent implements OnInit {
   constructor(private serTestimonios:TestimoniosService, private fb:FormBuilder, private spinner:NgxSpinnerService) {
 
     this.formTestimonios = this.fb.group({
-      id_testimonio:[''],
+      id_testimonio:[null],
       nombre:['',[Validators.required,Validators.minLength(3)]],
-      edad:[''],
+      edad:[null],
       descripcion:['',[Validators.required,Validators.minLength]],
       archivo:[''],
-      estado:[''] 
+      estado:[null] 
     });
 
    }

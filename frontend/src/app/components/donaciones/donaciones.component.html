@@ -1,1 +1,89 @@
-<p>donaciones works!</p>
+<div class="row">
+
+    <div class="col-lg-7">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Descripcion</th>
+                    <th>Categoria</th>
+                    <th>Telefono</th>
+                    <th>Direccion</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let donaciones of listadonaciones | paginate:{itemsPerPage:5, currentPage:p} ">
+                    <td>{{donaciones.id_donacion}}</td>
+                    <td>{{donaciones.descripcion}}</td>
+                    <td>{{donaciones.categoria}}</td>
+                    <td>{{donaciones.telefono}}</td>
+                    <td>{{donaciones.direccion}}</td>
+                    <td>{{donaciones.estado}}</td>
+                    <td>
+                        <div class="btn-group-sm">
+                            <button (click)="borrar(donaciones.id_donacion)" class="btn btn-danger">Eliminar</button>
+                            <button (click)="editarDonacion(donaciones)" class="btn btn-primary">Editar</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+        <div class="row">
+            <div class="col-sm-4">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-5">
+
+        <div class="card">
+            <div class="card-header">Donacion</div>
+            <div class="card-body">
+                <form [formGroup]="formDonaciones" (ngSubmit)="guadarDonacion()">
+
+                    <input formControlName="id_donacion" type="hidden">
+
+                    <div class="form-group">
+                        <input [ngClass]="{'is-invalid':formDonaciones.get('descripcion')?.touched}" formControlName="descripcion" type="text" class="form-control" placeholder="ingrese la descripcion de la donacion">
+                        <div class="invalid-feedback">
+                            <span *ngIf="formDonaciones.get('descripcion').hasError('required')">Campo obligatorio</span>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <select formControlName="categoria" class="form-control">
+                            <option value="0" disabled>Seleccionar categoria</option>
+                            <option *ngFor="let categoria of listar_categoria" value="{{categoria.id_cd}}">{{categoria.descripcion}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input [ngClass]="{'is-invalid':formDonaciones.get('telefono')?.touched}" formControlName="telefono" type="text" class="form-control" placeholder="ingrese un numero de telefono">
+                        <div class="invalid-feedback">
+                            <span *ngIf="formDonaciones.get('telefono').hasError('required')">Campo obligatorio</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input [ngClass]="{'is-invalid':formDonaciones.get('direccion')?.touched}" formControlName="direccion" type="text" class="form-control" placeholder="ingrese una direccion">
+                        <div class="invalid-feedback">
+                            <span *ngIf="formDonaciones.get('direccion').hasError('required')">Campo obligatorio</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input [ngClass]="{'is-invalid':formDonaciones.get('estado')?.touched}" formControlName="estado" type="text" class="form-control" placeholder="ingrese un estado">
+                        <div class="invalid-feedback">
+                            <span *ngIf="formDonaciones.get('estado').hasError('required')">Campo obligatorio</span>
+                        </div>
+                    </div>
+                    <button [disabled]="formDonaciones.invalid" class="btn btn-success">Añadir</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>

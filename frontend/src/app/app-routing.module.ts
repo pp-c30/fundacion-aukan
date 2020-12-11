@@ -20,6 +20,7 @@ import { CatPrevencionComponent } from './components/cat-prevencion/cat-prevenci
 import { CategoriasComponent } from './components/categorias/categorias.component';
 import { PrevencionComponent } from "./components/prevencion/prevencion.component";
 import { AdminPrevencionComponent } from "./components/admin-prevencion/admin-prevencion.component";
+import { DonacionesComponent } from './components/donaciones/donaciones.component';
 
 const routes: Routes = [
   {
@@ -88,6 +89,9 @@ const routes: Routes = [
   {
     path:'admin-prevencion',
     component:AdminPrevencionComponent
+  },
+  {
+    path:'donaciones', component:DonacionesComponent
   }
 
 ];

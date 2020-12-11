@@ -31,6 +31,7 @@ class Galeriacontroller {
     }
     guardargaleria(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body.fecha.year);
             const files = req.files;
             const ti = req.body.titulo;
             const cat = req.body.categoria_gale;

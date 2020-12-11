@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="form-group ">
-                    <select class="form-control">
+                    <select formControlName="categoria" class="form-control">
                         <option value="0" disabled>Seleccionar categoria</option>
                         <option *ngFor="let categoria of listar_categoria" value="{{categoria.id_cn}}">{{categoria.descripcion}}</option>
                     </select>
@@ -76,14 +76,8 @@
                 <div class="form-group">
                     <button [disabled]="formNoticia.invalid" type="submit" class="btn btn-success btn-block">Guardar</button>
                 </div>
-
-
             </form>
         </div>
-
-
-
     </div>
 </div>
-
 <ngx-spinner></ngx-spinner>

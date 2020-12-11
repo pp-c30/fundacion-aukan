@@ -24,7 +24,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminActividadesComponent } from './components/admin-actividades/admin-actividades.component';
 import { AdminDetalleActividadesComponent } from './components/admin-detalle-actividades/admin-detalle-actividades.component';
 
-
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { NgxSpinnerModule } from "ngx-spinner";
@@ -37,6 +36,7 @@ import { GaleriaDetalleComponent } from './components/galeria-detalle/galeria-de
 import { CategoriasComponent } from './components/categorias/categorias.component';
 import { NgxPaginationModule } from "ngx-pagination";
 import { AdminPrevencionComponent } from './components/admin-prevencion/admin-prevencion.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +73,8 @@ import { AdminPrevencionComponent } from './components/admin-prevencion/admin-pr
     ReactiveFormsModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

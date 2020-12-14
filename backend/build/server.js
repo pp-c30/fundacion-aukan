@@ -29,6 +29,7 @@ const img_actividades_routes_1 = __importDefault(require("./routes/img_actividad
 const img_galeria_routes_1 = __importDefault(require("./routes/img_galeria.routes"));
 const donaciones_routes_1 = __importDefault(require("./routes/donaciones.routes"));
 const testimonios_routes_1 = __importDefault(require("./routes/testimonios.routes"));
+const autenticacion_routes_1 = __importDefault(require("./routes/autenticacion.routes"));
 class server {
     constructor() {
         this.app = express_1.default();
@@ -54,6 +55,7 @@ class server {
         this.app.use(img_galeria_routes_1.default);
         this.app.use(donaciones_routes_1.default);
         this.app.use(testimonios_routes_1.default);
+        this.app.use(autenticacion_routes_1.default);
         //se configura el server para que el navegador pueda leer esta carpeta y tambien las imagenes
         this.app.use('/uploads', express_1.default.static(path_1.default.resolve('uploads')));
     }

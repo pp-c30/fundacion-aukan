@@ -43,7 +43,7 @@
                     <input formControName="titulo" placeholder="Ingrese titulo" type="text" class="form-control">
                 </div>
                 <div class="form-group">
-                    <input formControName="descripcion" placeholder="Ingrese descripcion" type="text" class="form-control">
+                    <textarea formControlName="descripcion" placeholder="Ingrese descripcion" name="" id="" cols="30" rows="3" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <input (change)="mostrarFotoSeleccionada($event)" formControlName="archivo" class="form-control-file" type="file">
@@ -52,7 +52,7 @@
                     <img style="height: 200px ;"  class="img-fluid" [src] ="this.imagenPreview || 'assets/not-found-image.jpg' " alt="">
                 </div>
                 <div class="form-group">
-                    <select class="form-control">
+                    <select formControlName="categoria_prev" class="form-control">
                         <option value="0" disabled selected>Seleccionar categoria</option>
                         <option *ngFor="let categoria of listar_categoria" value={{categoria.id_cp}}>{{categoria.descripcion}}</option>
                     </select>

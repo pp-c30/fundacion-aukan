@@ -1,4 +1,4 @@
 export interface ICategoriaN{
-    id_cn?:number,
-    descripcion:string
+    id_cn?:number;
+    descripcion:string;
 }

@@ -30,8 +30,7 @@ export class AdminPrevencionComponent implements OnInit {
   constructor(private serPrevencion:PrevencionService, private fb:FormBuilder, private spinner:NgxSpinnerService, private catprevservice:CatPrevencionService) { 
 
     this.formPrevencion = this.fb.group({
-      id_prevencion:[null],
-      titulo:['',[Validators.required,Validators.minLength(3)]],
+      titulo:[''],
       descripcion:['',[Validators.required]],
       archivo:['',[Validators.required]],
       categoria_prev:[null],
@@ -98,7 +97,7 @@ export class AdminPrevencionComponent implements OnInit {
   }
 
   eliminarPrevencion(fila:IPrevencion){
-    if(confirm('¿Esta seguro que desea eliminar este testimonio?')){
+    if(confirm('¿Esta seguro que desea eliminar estos datos?')){
       this.spinner.show();
       this.serPrevencion.deletePrevencion(fila).subscribe(
         resultado =>{

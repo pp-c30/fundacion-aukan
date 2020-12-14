@@ -1,4 +1,4 @@
 export interface ICategoriaP{
-    id_cp?:number
-    descripcion:string
+    id_cp?:number;
+    descripcion:string;
 }

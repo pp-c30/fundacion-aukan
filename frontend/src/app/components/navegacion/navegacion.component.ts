@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AutenticacionService } from '../../services/autenticacion.service';
 @Component({
   selector: 'app-navegacion',
   templateUrl: './navegacion.component.html',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavegacionComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authserv:AutenticacionService) { }
 
   ngOnInit(): void {
   }

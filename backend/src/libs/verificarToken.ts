@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 export function validarToken(req:Request, res:Response,next:NextFunction)
 {
-    const token:any =  req.header('auth-token');
+    const token:any =  req.header('Authorization');
 
     if (!token) {
         res.json('¡acceso denegado!');

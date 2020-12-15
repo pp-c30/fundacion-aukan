@@ -47,7 +47,7 @@ export class AutenticacionController
                     expiresIn:60*60*24
                 })
 
-                res.header('auth-token',token).json(usuario[0]);
+                res.json(token);
 
             }
 

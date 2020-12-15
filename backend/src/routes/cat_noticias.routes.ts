@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { Catnoticiacontroller } from '../controllers/cat_noticiascontroller';
 /*se importa el archivo verificartoken y luego se utiliza la funcion validarToken 
 para proteger la routa que se quiera proteger*/
-import { validarToken } from '../libs/verificartoken';
+import { validarToken } from '../libs/verificarToken';
 
 
 let catnoticiacontroller = new Catnoticiacontroller

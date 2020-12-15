@@ -21,37 +21,47 @@ import { CategoriasComponent } from './components/categorias/categorias.componen
 import { PrevencionComponent } from "./components/prevencion/prevencion.component";
 import { AdminPrevencionComponent } from "./components/admin-prevencion/admin-prevencion.component";
 import { DonacionesComponent } from './components/donaciones/donaciones.component';
+import { RegistrosComponent } from './components/registros/registros.component';
+import { IngresoComponent } from './components/ingreso/ingreso.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/admin-galeria',
+    redirectTo: '/ingreso',
     pathMatch: 'full'
   },
   {
-    path: 'admin-galeria', component: AdminGaleriaComponent
+    path: 'admin-galeria', 
+    component: AdminGaleriaComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'admin-testimonios',
-    component: AdminTestimoniosComponent
+    component: AdminTestimoniosComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'admin-noticia',
-    component: AdminNoticiaComponent
+    component: AdminNoticiaComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'testimonios',
     component:TestimoniosComponent
   },
   {
-    path: 'admin-actividades', component: AdminActividadesComponent
+    path: 'admin-actividades', 
+    component: AdminActividadesComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'detalle-testimonios/:id',
-    component:DetalleTestimoniosComponent},
+    component:DetalleTestimoniosComponent
+  },
   { 
-    path: 'admin-detalle-galeria/:id_galeria', component: AdminDetalleGaleriaComponent
-
+    path: 'admin-detalle-galeria/:id_galeria', 
+    component: AdminDetalleGaleriaComponent
   },
   {
     path:'noticia',
@@ -62,25 +72,37 @@ const routes: Routes = [
     component:DetalleNoticiaComponent
   },
   {
-    path: 'galeria', component: GaleriaComponent
+    path: 'galeria', 
+    component: GaleriaComponent
   },
   {
-    path: 'galeria-detalle', component: GaleriaDetalleComponent
+    path: 'galeria-detalle', 
+    component: GaleriaDetalleComponent
   },
   {
-    path: 'categoria-galeria', component: CatGaleriaComponent
+    path: 'categoria-galeria', 
+    component: CatGaleriaComponent,
+    canActivate:[AuthGuard]
   },
   {
-    path: 'categoria-donaciones', component:CatDonacionesComponent
+    path: 'categoria-donaciones', 
+    component:CatDonacionesComponent,
+    canActivate:[AuthGuard]
   },
   {
-    path: 'categoria-noticias', component:CatNoticiasComponent
+    path: 'categoria-noticias', 
+    component:CatNoticiasComponent,
+    canActivate:[AuthGuard]
   },
   {
-    path: 'categoria-prevencion', component:CatPrevencionComponent
+    path: 'categoria-prevencion', 
+    component:CatPrevencionComponent,
+    canActivate:[AuthGuard]
   },
   {
-    path: 'categorias', component:CategoriasComponent
+    path: 'categorias', 
+    component:CategoriasComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'prevencion',
@@ -88,10 +110,17 @@ const routes: Routes = [
   },
   {
     path:'admin-prevencion',
-    component:AdminPrevencionComponent
+    component:AdminPrevencionComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'donaciones', component:DonacionesComponent
+  },
+  {
+    path:'registro', component:RegistrosComponent
+  },
+  {
+    path:'ingreso', component:IngresoComponent
   }
 
 ];

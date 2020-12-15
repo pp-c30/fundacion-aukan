@@ -20,7 +20,7 @@ import { AdminDetalleGaleriaComponent } from './components/admin-detalle-galeria
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
 import { AdminTestimoniosComponent } from './components/admin-testimonios/admin-testimonios.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminActividadesComponent } from './components/admin-actividades/admin-actividades.component';
 import { AdminDetalleActividadesComponent } from './components/admin-detalle-actividades/admin-detalle-actividades.component';
 
@@ -37,6 +37,10 @@ import { CategoriasComponent } from './components/categorias/categorias.componen
 import { NgxPaginationModule } from "ngx-pagination";
 import { AdminPrevencionComponent } from './components/admin-prevencion/admin-prevencion.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RegistrosComponent } from './components/registros/registros.component';
+import { IngresoComponent } from './components/ingreso/ingreso.component';
+import { AuthGuard } from './auth.guard';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +67,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DetalleNoticiaComponent,
     GaleriaDetalleComponent,
     CategoriasComponent,
-    AdminPrevencionComponent
+    AdminPrevencionComponent,
+    RegistrosComponent,
+    IngresoComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +82,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgxPaginationModule,
     NgbModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptorService,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

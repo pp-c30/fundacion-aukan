@@ -48,7 +48,7 @@ class AutenticacionController {
                     const token = jsonwebtoken_1.default.sign({ _id: usuario[0].id_usuario }, process.env.TOKEN_SECRET || 'tkn3scrt4fkn8', {
                         expiresIn: 60 * 60 * 24
                     });
-                    res.header('auth-token', token).json(usuario[0]);
+                    res.json(token);
                 }
             }
         });

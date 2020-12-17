@@ -25,6 +25,7 @@ import { RegistrosComponent } from './components/registros/registros.component';
 import { IngresoComponent } from './components/ingreso/ingreso.component';
 import { AuthGuard } from './auth.guard';
 import { AdminDetalleActividadesComponent } from './components/admin-detalle-actividades/admin-detalle-actividades.component';
+import { DetallePrevencionComponent } from "./components/detalle-prevencion/detalle-prevencion.component";
 
 const routes: Routes = [
   {
@@ -130,7 +131,12 @@ const routes: Routes = [
     path:'admin-detalle-actividad/:id_actividad',
     component:AdminDetalleActividadesComponent
 
+  },
+  {
+    path:'detalle-prevencion/:id',
+    component:DetallePrevencionComponent
   }
+
 
 ];
 

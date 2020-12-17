@@ -1,55 +1,85 @@
 <div class="row">
 
-    <div class="col-lg-6">
+    <div class="col-lg-4">
 
         <div class="card">
             <div class="card-header">Formulario actividades</div>
             <div class="card-body">
 
-                <form [formGroup]="formActividades">
+                <form [formGroup]="formActividades" (ngSubmit)="guardaractividad()" novalidate>
+
+                    <input formControlName="id_actividad" type="hidden">
+
                     <div class="form-group">
                         <input formControlName="titulo" placeholder="ingrese el titulo de la imagen" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <input formControlName="descripcion" placeholder="ingrese una descripcion" type="text" class="form-control">
                     </div>
-                    <div class="form-group">
-                        <input formControlName="categoria_actividad" placeholder="ingrese el tipo de actividad" type="text" class="form-control">
+                    <div class="form-group ">
+                        <select formControlName="categoria_actividad" class="form-control">
+                            <option value="0" disabled>Seleccionar categoria</option>
+                            <option *ngFor="let categoria of listar_categoria" value="{{categoria.id_cg}}">{{categoria.descripcion}}</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <input formControlName="fecha_hora" placeholder="ingrese fecha y hora de la imagen" type="text" class="form-control">
+                        <div class="input-group">
+                            <input formControlName="fecha_hora" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary calendar" (click)="d.toggle()" type="button"></button>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <input formControlName="estado" placeholder="ingrese el estado" type="number" class="form-control">
                     </div>
-                    <div class="form-group">
-                        <input formControlName="archivo" class="form-control-file" type="file" name="" id="" multiple>
+                    <div [style]="ocultar_btnfile" class="form-group">
+                        <input (change)="previewimagen($event)" formControlName="archivo" class="form-control-file" type="file" name="" id="" multiple>
                     </div>
 
                     <div class="form-group">
-                        <button class="btn btn-success">Guardar</button>
+                        <button [disabled]="formActividades.invalid" class="btn btn-success">Guardar</button>
+                        <button type="button" (click)="vaciarForm()" type="button " class="btn btn-primary ">Vaciar</button>
                     </div>
+
                 </form>
+
+                <div [style]="ocultar_btnfile" id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+
+                        <div *ngFor=" let url of img_url; let isfirst = first" [ngClass]="{active:isfirst}" class="carousel-item">
+                            <img [src]="url" class="d-block w-100" alt="...">
+                        </div>
+
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-8">
 
         <div class="card">
-            <div class="card-header">
-                Grilla actividades
-            </div>
+
             <div class="card body">
 
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>id</th>
+                            <th>Id</th>
                             <th>Nombre de la actividad</th>
                             <th>Descripcion de la actividad</th>
-                            <th>Categoria de la actividad</th>
-                            <th>Fecha y Hora de la actividad</th>
-                            <th>Estado de la actividad</th>
+                            <th>Categoria</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,6 +90,13 @@
                             <td>{{fila.categoria_actividad}}</td>
                             <td>{{fila.fecha_hora}}</td>
                             <td>{{fila.estado}}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <button (click)="detalleEvento(fila.id_actividades)" class="btn btn-info">Ver mas</button>
+                                    <button (click)="eliminarActividad(fila.id_actividades)" class="btn btn-danger">Eliminar</button>
+                                    <button (click)="editaractividad(fila)" class="btn btn-primary">Editar</button>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -68,3 +105,6 @@
         </div>
     </div>
 </div>
+
+
+<ngx-spinner></ngx-spinner>

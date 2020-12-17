@@ -5,4 +5,5 @@ export interface IActividades {
     categoria_actividad: any;
     fecha_hora: any;
     estado: any;
+    imagen_portada:any;
 }

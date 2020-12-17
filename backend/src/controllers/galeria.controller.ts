@@ -25,7 +25,7 @@ export class Galeriacontroller
     public async guardargaleria(req:Request,res:Response)
     {
       
-      console.log(req.body.fecha.year);
+
         const files:any = req.files;
 
         const ti = req.body.titulo;

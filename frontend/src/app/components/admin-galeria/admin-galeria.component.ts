@@ -80,7 +80,7 @@ export class AdminGaleriaComponent implements OnInit {
       this.serviceGaleria.savegaleria(this.formGaleria.value,this.archivos).subscribe(
           resultado => {
             console.log(resultado);
-            this,this.img_url = []
+            this.img_url = [];
             this.formGaleria.reset();
             this.listaGaleria();
   

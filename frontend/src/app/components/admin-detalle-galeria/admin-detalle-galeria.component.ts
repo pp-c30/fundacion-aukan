@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 
 import { IHtmlImputEvent } from '../../models/previewGaleria';
 
+
 @Component({
   selector: 'app-admin-detalle-galeria',
   templateUrl: './admin-detalle-galeria.component.html',
@@ -30,7 +31,7 @@ export class AdminDetalleGaleriaComponent implements OnInit {
   constructor(private fb:FormBuilder, private activatedrouter:ActivatedRoute, private servicegaleria:GaleriaService) 
   { 
     this.formDetalleGaleria = this.fb.group({
-      archive:['']
+      archivo:['']
     });
   }
 

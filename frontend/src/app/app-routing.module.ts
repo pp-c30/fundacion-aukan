@@ -26,6 +26,7 @@ import { IngresoComponent } from './components/ingreso/ingreso.component';
 import { AuthGuard } from './auth.guard';
 import { AdminDetalleActividadesComponent } from './components/admin-detalle-actividades/admin-detalle-actividades.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { DetallePrevencionComponent } from "./components/detalle-prevencion/detalle-prevencion.component";
 
 const routes: Routes = [
   {
@@ -134,7 +135,13 @@ const routes: Routes = [
   {
     path:'home',
     component:InicioComponent
+
+  },
+  {
+    path:'detalle-prevencion/:id',
+    component:DetallePrevencionComponent
   }
+
 
 ];
 

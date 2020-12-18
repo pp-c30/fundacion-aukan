@@ -14,6 +14,10 @@ export class DonacionesService {
   {
     return this.http.get<IDonacionesS[]>('http://localhost:3000/donaciones');
   }
+  getDonacionpublic()  
+  {
+    return this.http.get<IDonacionesS[]>('http://localhost:3000/donaciones-public');
+  }
 
   saveDonacion(donaciones:IDonacionesS)
   {

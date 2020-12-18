@@ -26,6 +26,9 @@ export class PrevencionComponent implements OnInit {
     );
   }
 
-  
+  verDetalle(id:number){
+    this.router.navigate(['/detalle-prevencion',id]);
+  }
+ 
 
 }

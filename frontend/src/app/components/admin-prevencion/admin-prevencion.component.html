@@ -3,14 +3,14 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>id_prevencion</th>
-                    <th>titulo</th>
-                    <th>descripcion</th>
-                    <th>imagen</th>
-                    <th>categoria_prev</th>
-                    <th>estado</th>
-                    <th>public_id</th>
-                    <th>operacion</th>
+                    <th>Id_prevencion</th>
+                    <th>Titulo</th>
+                    <th>Descripcion</th>
+                    <th>Imagen</th>
+                    <th>Categoria</th>
+                    <th>Estado</th>
+                    <th>Public_id</th>
+                    <th>Operacion</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,7 +43,7 @@
                     <input formControlName="titulo" placeholder="Ingrese titulo" type="text" class="form-control">
                 </div>
                 <div class="form-group">
-                    <textarea formControlName="descripcion" placeholder="Ingrese descripcion" name="" id="" cols="30" rows="3" class="form-control"></textarea>
+                    <angular-editor formControlName="descripcion" [config]="editorConfig"></angular-editor>
                 </div>
                 <div class="form-group">
                     <input (change)="mostrarFotoSeleccionada($event)" formControlName="archivo" class="form-control-file" type="file">

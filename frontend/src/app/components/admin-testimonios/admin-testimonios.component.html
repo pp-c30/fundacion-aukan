@@ -4,13 +4,13 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>id_testimonio</th>
-                    <th>nombre</th>
-                    <th>edad</th>
-                    <th>descripcion</th>
-                    <th>imagen</th>
-                    <th>estado</th>
-                    <th>public_id</th>
+                    <th>Id_testimonio</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Descripcion</th>
+                    <th>Imagen</th>
+                    <th>Estado</th>
+                    <th>Public_id</th>
                     <th>Operaciones</th>
                 </tr>
             </thead> 
@@ -52,7 +52,7 @@
                     <input formControlName="edad" placeholder="Ingrese edad" type="number" class="form-control">
                 </div>
                 <div class="form-group">
-                    <textarea formControlName="descripcion" placeholder="Ingrese descripcion" name="" id="" cols="30" rows="3" class="form-control"></textarea>
+                    <angular-editor formControlName="descripcion" [config]="editorConfig"></angular-editor>
                 </div>
 
                 <div class="form-group">

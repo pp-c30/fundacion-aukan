@@ -42,6 +42,8 @@ import { IngresoComponent } from './components/ingreso/ingreso.component';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { DetallePrevencionComponent } from './components/detalle-prevencion/detalle-prevencion.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +84,8 @@ import { DetallePrevencionComponent } from './components/detalle-prevencion/deta
     ReactiveFormsModule,
     NgxSpinnerModule,
     NgxPaginationModule,
-    NgbModule
+    NgbModule,
+    AngularEditorModule
   ],
   providers: [
     AuthGuard,

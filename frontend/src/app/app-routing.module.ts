@@ -25,11 +25,12 @@ import { RegistrosComponent } from './components/registros/registros.component';
 import { IngresoComponent } from './components/ingreso/ingreso.component';
 import { AuthGuard } from './auth.guard';
 import { AdminDetalleActividadesComponent } from './components/admin-detalle-actividades/admin-detalle-actividades.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/ingreso',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {
@@ -129,7 +130,10 @@ const routes: Routes = [
   {
     path:'admin-detalle-actividad/:id_actividad',
     component:AdminDetalleActividadesComponent
-
+  },
+  {
+    path:'home',
+    component:InicioComponent
   }
 
 ];

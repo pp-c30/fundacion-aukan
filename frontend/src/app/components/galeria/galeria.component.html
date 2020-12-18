@@ -1,13 +1,15 @@
 <div class="row">
-    <div *ngFor="let galeria of listaGaleria" class="col-lg-3">
-        <div class="card" style="width: 18rem;">
-            <img style="height:200px;" [src]="galeria.imagen_portada" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{galeria.titulo}}</h5>
-                <a class="btn btn-primary" (click)="verMas(galeria)">Ver mas</a>
+    <div *ngFor="let galeria of listaGaleria">
+        <ng-template [ngIf]="galeria.estado ==1">
+            <div class="col-lg-3">
+                <div class="card" style="width: 18rem;">
+                    <img style="height:200px;" [src]="galeria.imagen_portada" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{galeria.titulo}}</h5>
+                        <a class="btn btn-primary" (click)="verMas(galeria)">Ver mas</a>
+                    </div>
+                </div>
             </div>
-        </div>
+        </ng-template>
     </div>
-
-
 </div>

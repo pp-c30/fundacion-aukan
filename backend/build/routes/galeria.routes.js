@@ -9,6 +9,7 @@ const multer_1 = __importDefault(require("../libs/multer"));
 const verificarToken_1 = require("../libs/verificarToken");
 let galeriacontroller = new galeria_controller_1.Galeriacontroller;
 const enrutadorGaleria = express_1.Router();
+enrutadorGaleria.route('/galeria-public').get(galeriacontroller.listargaleria);
 enrutadorGaleria.route('/galeria').get(verificarToken_1.validarToken, galeriacontroller.listargaleria);
 enrutadorGaleria.route('/galeria').post(multer_1.default.array('imagen'), galeriacontroller.guardargaleria);
 enrutadorGaleria.route('/galeria/:id').delete(galeriacontroller.eliminargaleria);

@@ -37,6 +37,11 @@ export class ActividadesService {
     return this.http.get<IActividades[]>('http://localhost:3000/actividades'); 
   }
 
+  getActividadespublic()
+  {
+    return this.http.get<IActividades[]>('http://localhost:3000/actividades-public'); 
+  }
+
   getImagesActividades(id_actividad:number)
   {
     return this.http.get<IActividadesDetalle[]>('http://localhost:3000/actividades-imagenes/'+id_actividad);

@@ -11,8 +11,14 @@ export class NoticiaService {
     
   }
 
-  getNoticia(){
+  getNoticia()
+  {
     return this.http.get<INoticia[]>('http://localhost:3000/noticia');
+  }
+
+  getNoticiapublic()
+  {
+    return this.http.get<INoticia[]>('http://localhost:3000/noticia-public');
   }
 
   getOneNoticia(id:number){

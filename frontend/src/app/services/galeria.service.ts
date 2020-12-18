@@ -27,7 +27,7 @@ export class GaleriaService {
       fd.append('titulo', datosgaleria.titulo);
       fd.append('categoria_gale', datosgaleria.categoria_gale);
       fd.append('fecha', fecha);
-      fd.append('estado', datosgaleria.estado);
+      fd.append('estado', String(datosgaleria.estado));
 
 
 
@@ -43,6 +43,11 @@ export class GaleriaService {
    getGaleria()
    {
     return this.http.get<IGaleria[]>('http://localhost:3000/galeria');
+   }
+
+   getGaleriapublic()
+   {
+    return this.http.get<IGaleria[]>('http://localhost:3000/galeria-public');
    }
 
    getImgGaleria(id_galeria:number)

@@ -29,6 +29,13 @@ class ActividadesController {
             res.json(actividades);
         });
     }
+    listarActividadespublic(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const db = yield database_1.conexion();
+            let actividades = yield db.query('select * from actividades order by fecha_hora desc limit 6');
+            res.json(actividades);
+        });
+    }
     listarActividad(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();

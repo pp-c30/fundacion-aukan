@@ -24,6 +24,18 @@ export class ActividadesController{
 
     }
 
+    async listarActividadespublic(req:Request, res:Response)
+    {
+
+        const db = await conexion(); 
+
+        let actividades = await db.query('select * from actividades order by fecha_hora desc limit 6');
+
+        res.json(actividades);
+
+
+    }
+
     public async listarActividad(req:Request,res:Response){
 
         const db = await conexion();

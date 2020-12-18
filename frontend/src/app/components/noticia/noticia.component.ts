@@ -17,7 +17,7 @@ export class NoticiaComponent implements OnInit {
   }
 
   listarNoticia(){
-    this.serviceNoticia.getNoticia().subscribe(
+    this.serviceNoticia.getNoticiapublic().subscribe(
       resultado =>{
         this.lista_datos = resultado;
       },

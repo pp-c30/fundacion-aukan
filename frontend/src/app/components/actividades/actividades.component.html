@@ -1,1 +1,15 @@
-<p>actividades works!</p>
+<div class="row">
+    <div *ngFor="let actividades of lista_actividades">
+        <ng-template [ngIf]="actividades.estado ==1">
+            <div class="col-lg-3">
+                <div class="card" style="width: 18rem;">
+                    <img style="height:200px;" [src]="actividades.imagen_portada" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{actividades.titulo}}</h5>
+                        <a class="btn btn-primary" (click)="verMas(actividades)">Ver mas</a>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

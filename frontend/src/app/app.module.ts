@@ -44,6 +44,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { DetallePrevencionComponent } from './components/detalle-prevencion/detalle-prevencion.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { DetalleActividadesComponent } from './components/detalle-actividades/detalle-actividades.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     RegistrosComponent,
     IngresoComponent,
     InicioComponent,
-    DetallePrevencionComponent
+    DetallePrevencionComponent,
+    DetalleActividadesComponent
   ],
   imports: [
     BrowserModule,

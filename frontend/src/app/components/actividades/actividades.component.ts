@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActividadesService } from "../../services/actividades.service";
+import { IActividades } from "../../models/actividades";
+import { Router, NavigationExtras } from "@angular/router";
 
 @Component({
   selector: 'app-actividades',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActividadesComponent implements OnInit {
 
-  constructor() { }
+  lista_actividades:IActividades[] = [];
+  constructor(private serviceActividades:ActividadesService, private router:Router) { }
 
   ngOnInit(): void {
+    this.obtenerActividades();
+  }
+
+
+  obtenerActividades()
+  {
+    this.serviceActividades.getActividadespublic().subscribe(
+      resultado => {
+        this.lista_actividades = resultado;
+      }
+    )
+  }
+
+  verMas(actividades:IActividades)
+  {
+    let datosExtras:NavigationExtras = {
+      queryParams:actividades
+    }
+    this.router.navigate(['detalle-actividades',actividades],datosExtras);
   }
 
 }

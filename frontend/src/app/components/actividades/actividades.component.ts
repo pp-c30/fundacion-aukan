@@ -32,7 +32,7 @@ export class ActividadesComponent implements OnInit {
     let datosExtras:NavigationExtras = {
       queryParams:actividades
     }
-    this.router.navigate(['detalle-actividades',actividades],datosExtras);
+    this.router.navigate(['actividades-detalle',actividades],datosExtras);
   }
 
 }

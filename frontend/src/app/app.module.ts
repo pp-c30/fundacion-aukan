@@ -45,6 +45,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { DetallePrevencionComponent } from './components/detalle-prevencion/detalle-prevencion.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { DetalleActividadesComponent } from './components/detalle-actividades/detalle-actividades.component';
+import { ActividadesDetalleComponent } from './components/actividades-detalle/actividades-detalle.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { DetalleActividadesComponent } from './components/detalle-actividades/de
     IngresoComponent,
     InicioComponent,
     DetallePrevencionComponent,
-    DetalleActividadesComponent
+    DetalleActividadesComponent,
+    ActividadesDetalleComponent
   ],
   imports: [
     BrowserModule,

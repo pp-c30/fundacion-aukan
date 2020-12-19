@@ -8,7 +8,7 @@
 
                 <form [formGroup]="formActividades" (ngSubmit)="guardaractividad()" novalidate>
 
-                    <input formControlName="id_actividad" type="hidden">
+                    <input formControlName="id_actividad" type="number">
 
                     <div class="form-group">
                         <input formControlName="titulo" placeholder="ingrese el titulo de la imagen" type="text" class="form-control">

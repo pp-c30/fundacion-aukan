@@ -29,6 +29,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { DetallePrevencionComponent } from "./components/detalle-prevencion/detalle-prevencion.component";
 import { DetalleActividadesComponent } from "./components/detalle-actividades/detalle-actividades.component";
 import { ActividadesComponent } from "./components/actividades/actividades.component";
+import { ActividadesDetalleComponent } from './components/actividades-detalle/actividades-detalle.component';
 
 const routes: Routes = [
   {
@@ -150,6 +151,10 @@ const routes: Routes = [
   {
     path:'actividades',
     component:ActividadesComponent
+  },
+  {
+    path:'actividades-detalle',
+    component:ActividadesDetalleComponent
   }
 
 

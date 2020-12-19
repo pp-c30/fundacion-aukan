@@ -29,6 +29,13 @@ class Galeriacontroller {
             return res.json(galeria);
         });
     }
+    listargaleriapublic(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const db = yield database_1.conexion();
+            let galeria = yield db.query('select * from galeria order by fecha desc limit 5');
+            return res.json(galeria);
+        });
+    }
     guardargaleria(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const files = req.files;

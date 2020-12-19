@@ -6,7 +6,7 @@ let galeriacontroller = new Galeriacontroller;
 
 const enrutadorGaleria = Router();
 
-enrutadorGaleria.route('/galeria-public').get(galeriacontroller.listargaleria);
+enrutadorGaleria.route('/galeria-public').get(galeriacontroller.listargaleriapublic);
 enrutadorGaleria.route('/galeria').get(validarToken,galeriacontroller.listargaleria);
 enrutadorGaleria.route('/galeria').post(multer.array('imagen'),galeriacontroller.guardargaleria);
 enrutadorGaleria.route('/galeria/:id').delete(galeriacontroller.eliminargaleria);

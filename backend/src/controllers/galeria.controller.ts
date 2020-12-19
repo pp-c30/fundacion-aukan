@@ -22,6 +22,15 @@ export class Galeriacontroller
         return res.json(galeria)   
     }
 
+    public async listargaleriapublic(req:Request,res:Response)
+    {
+        const db = await conexion();
+
+        let galeria = await db.query('select * from galeria order by fecha desc limit 5');
+
+        return res.json(galeria)   
+    }
+
     public async guardargaleria(req:Request,res:Response)
     {
       

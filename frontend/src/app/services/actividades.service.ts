@@ -14,6 +14,12 @@ export class ActividadesService {
 
    }
 
+   updateActividades(datosActividades:IActividades)
+   {
+     let id_actividades = datosActividades.id_actividades
+     return this.http.put('http://localhost:3000/actividadesimg/'+id_actividades,datosActividades)
+   }
+
    saveActividades(datosActividades: IActividades,files:FileList)
    {
     let fecha_hora = datosActividades.fecha_hora.year+'-'+datosActividades.fecha_hora.month+'-'+datosActividades.fecha_hora.day;
@@ -69,12 +75,7 @@ export class ActividadesService {
      return this.http.delete('http://localhost:3000/actividadimg/'+id_actividades);
    }
 
-   updateActividades(datosActividades:IActividades)
-   {
-     let id_actividades = datosActividades.id_actividades
-     return this.http.put('http://localhost:3000/actividadesimg/'+id_actividades,datosActividades)
-   }
-
+   
    assingPortada(id_ai:number,id_actividad:number)
    {
     return this.http.get('http://localhost:3000/actividad-portada/'+id_ai+'/'+id_actividad)

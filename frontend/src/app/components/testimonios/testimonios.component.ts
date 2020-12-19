@@ -24,7 +24,7 @@ export class TestimoniosComponent implements OnInit {
   }
 
   listarTestimonio(){
-    this.serviceTestimonios.getTestimonios().subscribe(
+    this.serviceTestimonios.getTestimoniospublic().subscribe(
       resultado => {
         this.lista_datos = resultado;
       },

@@ -14,8 +14,14 @@ export class TestimoniosService {
    }
   
    //obtener datos de testimonios desde la api
-   getTestimonios(){
+   getTestimonios()
+   {
      return this.http.get<ITestimonios[]>('http://localhost:3000/testimonios');
+   }
+
+   getTestimoniospublic()
+   {
+     return this.http.get<ITestimonios[]>('http://localhost:3000/testimonios-public');
    }
 
    getOneTestimonio(id:number){

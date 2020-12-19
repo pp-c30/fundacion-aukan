@@ -41,7 +41,7 @@ export class DonacionesComponent implements OnInit {
 
   obtenerdonaciones()
   {
-    this.servicedonacion.getDonacion().subscribe(
+    this.servicedonacion.getDonacionpublic().subscribe(
       resultado =>{
         this.listadonaciones = resultado
       }, error => console.log(error)

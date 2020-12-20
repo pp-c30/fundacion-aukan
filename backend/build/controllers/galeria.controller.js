@@ -32,7 +32,7 @@ class Galeriacontroller {
     listargaleriapublic(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();
-            let galeria = yield db.query('select * from galeria order by fecha desc limit 5');
+            let galeria = yield db.query('select * from galeria order by fecha desc limit 6');
             return res.json(galeria);
         });
     }

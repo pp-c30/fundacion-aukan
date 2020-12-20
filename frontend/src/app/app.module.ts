@@ -46,6 +46,7 @@ import { DetallePrevencionComponent } from './components/detalle-prevencion/deta
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { DetalleActividadesComponent } from './components/detalle-actividades/detalle-actividades.component';
 import { ActividadesDetalleComponent } from './components/actividades-detalle/actividades-detalle.component';
+import { DonacionesPublicComponent } from './components/donaciones-public/donaciones-public.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { ActividadesDetalleComponent } from './components/actividades-detalle/ac
     InicioComponent,
     DetallePrevencionComponent,
     DetalleActividadesComponent,
-    ActividadesDetalleComponent
+    ActividadesDetalleComponent,
+    DonacionesPublicComponent
   ],
   imports: [
     BrowserModule,

@@ -26,7 +26,7 @@ export class IngresoComponent implements OnInit {
     this.authserv.login(this.formIngreso.value).subscribe(
       respuesta => {
         localStorage.setItem('token',String(respuesta));
-        this.router.navigate(['/admin-galeria']);
+        this.router.navigate(['/']);
       }
     )
   }

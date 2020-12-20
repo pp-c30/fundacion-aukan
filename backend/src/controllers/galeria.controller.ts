@@ -26,7 +26,7 @@ export class Galeriacontroller
     {
         const db = await conexion();
 
-        let galeria = await db.query('select * from galeria order by fecha desc limit 5');
+        let galeria = await db.query('select * from galeria order by fecha desc limit 6');
 
         return res.json(galeria)   
     }

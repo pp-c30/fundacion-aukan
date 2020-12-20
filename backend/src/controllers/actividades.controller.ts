@@ -29,7 +29,7 @@ export class ActividadesController{
 
         const db = await conexion(); 
 
-        let actividades = await db.query('select * from actividades order by fecha_hora desc limit 5');
+        let actividades = await db.query('select * from actividades order by fecha_hora desc limit 4');
 
         res.json(actividades);
 

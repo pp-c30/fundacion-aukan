@@ -1,17 +1,128 @@
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
+<div class="jumbotron jumbotron-fluid" style="background: url(../../../assets/photo_2020-07-02_11-04-02.jpg) center center / cover no-repeat; align-content: center center; height: 600px; color: gray;">
+    <div class="container">
+        <div class="col-6">
+            <br>
+            <h1 style="font-size: 3cm; color: white;">
+                Fundacion
+            </h1>
 
-        <div *ngFor=" let g  of galeria ; let isfirst = first" [ngClass]="{active:isfirst}" class="carousel-item">
-            <img [src]="g.imagen_portada" class="d-block w-100" alt="...">
         </div>
-
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+</div>
+<div class="container">
+    <div class="col-10">
+        <p style="font-size: 25px; text-align: center;">
+            Somos una entidad sin fines de lucro, que nos dedicamos a la prevención, acompañamiento, rehabilitación y reinserción social de personas que sufren distintas problemáticas relacionadas con adicciones.
+        </p>
+    </div>
+</div>
+<hr>
+
+<div class="center-box">
+    <div class="row">
+        <div class="col">
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-secondary btn-lg btn-block" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <b>Sedes</b> 
+                          </button>
+                        </h5>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <li>
+                                <p style="font-size: 15px;">Contamos con una sede central ubicada en Cipolletti, con capacidad para 10 personas. Donde llevamos a cabo tratamientos ambulatorios y atención a familiares de usuarios en recuperación.</p>
+                            </li>
+                            <li>
+                                <p style="font-size: 15px;">También disponemos de una casa de internarciòn ubicada en Allen, donde tenemos una capacidad de 28 camas.</p>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-secondary btn-lg btn-block" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <b>Personal</b>
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <p style="font-size: 15px;">
+                                <li>
+                                    Fundador y Presidente:<br>- Gustavo Rodrìguez
+                                </li>
+                                <li>
+                                    Director Comunidad Terapéutica:<br>- Jose Morinigo
+                                </li>
+                                <li>
+                                    Equipo Multidisciplinario<br>- Natalia Martín (Psicóloga)<br>- Marcos Martínez (Psicólogo)<br>- Soledad Rost (Psicóloga)<br>- Gustavo Rodríguez (Psicólogo Social)<br>- Mariel Ditrich (Operadora Terapéutica)<br>- José
+                                    Morinigo (OperadorTerapéutico)
+                                </li>
+                                <li>
+                                    Colaboradores/as:<br>- Angela Fattorel<br>- Padre Héctor García Gambino
+                                </li>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="center-box" style="margin-left: 14cm; margin-right: 10cm;">
+    <div class="row">
+        <div class="col">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><button type="button" class="btn btn-dark btn-lg btn-block" routerLink="/testimonios">Testimonios</button> </td>
+                        <td><button type="button" class="btn btn-dark btn-lg btn-block" routerLink="/noticia">Noticias</button> </td>
+                        <td><button type="button" class="btn btn-dark btn-lg btn-block" routerLink="/actividades">Actividades</button> </td>
+                    </tr>
+                    <tr>
+                        <td><button type="button" class="btn btn-dark btn-lg btn-block" routerLink="/prevencion">Prevencion</button> </td>
+                        <td><button type="button" class="btn btn-dark btn-lg btn-block" routerLink="/donaciones">Donaciones</button> </td>
+                        <td><button type="button" class="btn btn-dark btn-lg btn-block" routerLink="/galeria">Galeria</button> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<br>
+<hr>
+
+
+
+
+
+
+<div class="row" style="margin-left: 1cm;">
+    <div class="row">
+        <div class="card-group">
+            <div class="col-md-3 mx-auto my-4" *ngFor=" let n  of lista_datos ; let isfirst = first" [ngClass]="{active:isfirst}">
+                <div class="card" style="width: 17rem;">
+
+                    <img [src]="n.imagen || 'assets/not-found-image.jpg'" style="height: 280px; width: fit-content;" class="card-img-top" alt="">
+
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: black;">{{n.titulo}}</h5>
+                        <p class="card-text" style="color: black;">{{n.descripcion}}</p>
+
+                        <p class="card-text" style="color: black;"><small class="text-muted">{{n.fecha_hora}}</small></p>
+
+                        <a class="btn btn-primary" (click)="verDetalle(n.id_noticia)">Ver mas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

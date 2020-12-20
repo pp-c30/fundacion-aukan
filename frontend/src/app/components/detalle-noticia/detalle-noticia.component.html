@@ -9,7 +9,7 @@
             <div class="card-header">{{unaNoticia.titulo}}</div>
             <div class="card-body">
                 <h6 class="card-subtitle">{{unaNoticia.fecha_hora}}</h6>
-                {{unaNoticia.descripcion}}
+                <p class="card-text" [innerHtml]="unaNoticia.descripcion"></p>
             </div>
         </div>
     </div>

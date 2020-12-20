@@ -1,11 +1,39 @@
-<div class="row">
-  <div *ngFor ="let fila of lista_datos" class="col-lg-4">
-      <div class="card">
-          <img class="card-img-top" [src]="fila.imagen" alt="" style="height: 200px;">
-          <div class="card-body">
-              <h3 clas="card-title">{{fila.titulo}}</h3>
-              <button (click)="verDetalle(fila.id_prevencion)" class="btn btn-primary btn-sm">Ver mas</button>
-          </div>
-      </div>
+<div class="card bg-dark text-white">
+  <img src="../../../assets/testimonios.jpg" class="card-img" alt="..." style="max-width: 3000px;">
+  <div class="card-img-overlay">
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 class="display-2">Prevenciones</h1>
   </div>
 </div>
+<br>
+<br>
+<br>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8 mx-auto my-4">
+    <div class="card mb-5">
+      <div *ngFor ="let fila of lista_datos" class="row g-0 ">
+        <div class="col-md-5">
+          <img [src]="fila.imagen" alt="..." style="max-width: 350px;">
+        </div>
+        <div class="col-md-7">
+          <div class="card-body">
+            <h3 class="card-title">{{fila.titulo}}</h3>
+            <p class="card-text" [innerHtml]="fila.descripcion"></p>
+            <div class="align-items-center">
+              <button (click)="verDetalle(fila.id_prevencion)" class="btn btn-primary btn-sm">Ver mas</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-2"></div>
+
+
+</div>
+

@@ -19,7 +19,7 @@
                     <td>{{fila.id_testimonio}}</td>
                     <td>{{fila.nombre}}</td>
                     <td>{{fila.edad}}</td>
-                    <td>{{fila.descripcion}}</td>
+                    <td [innerHtml]="fila.descripcion"></td>
                     <td>
                         <img style="width: 75px;" class="img-fluid rounded" [src] = "fila.imagen" alt="">
                     </td>
@@ -52,7 +52,7 @@
                     <input formControlName="edad" placeholder="Ingrese edad" type="number" class="form-control">
                 </div>
                 <div class="form-group">
-                    <angular-editor formControlName="descripcion" [config]="editorConfig"></angular-editor>
+                    <angular-editor formControlName="descripcion" [config]="editorConfig" ></angular-editor>
                 </div>
 
                 <div class="form-group">

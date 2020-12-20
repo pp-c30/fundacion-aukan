@@ -17,7 +17,7 @@
                 <tr *ngFor="let fila of listado_datos_prevencion">
                     <td>{{fila.id_prevencion}}</td>
                     <td>{{fila.titulo}}</td>
-                    <td>{{fila.descripcion}}</td>
+                    <td [innerHtml]="fila.descripcion"></td>
                     <td>
                         <img style="width: 75px;" class="img-fluid rounded" [src]="fila.imagen" alt="">
                     </td>

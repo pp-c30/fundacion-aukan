@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-header">{{unaPrevencion.titulo}}</div>
             <div class="card-body">
-                {{unaPrevencion.descripcion}}
+                <p class="card-text" [innerHtml]="unaPrevencion.descripcion"></p>
             </div>
         </div>
     </div>

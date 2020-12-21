@@ -9,7 +9,8 @@
             <div class="card-header">{{unTestimonio.nombre}}</div>
             <div class="card-body">
                 <h6 class="card-subtitle">Edad: {{unTestimonio.edad}}</h6>
-                {{unTestimonio.descripcion}}
+                <hr color="green" size=2>
+                <p [innerHtml]="unTestimonio.descripcion"></p>
             </div>
         </div>
     </div>

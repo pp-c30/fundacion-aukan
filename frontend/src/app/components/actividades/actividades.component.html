@@ -1,4 +1,16 @@
-<div class="row">
+<div class="card bg-dark text-white">
+    <img src="../../../assets/testimonios.jpg" class="card-img" alt="..." style="max-width: 3000px;">
+    <div class="card-img-overlay">
+      <br>
+      <br>
+      <br>
+      <br>
+      <h1 class="display-2">Actividades</h1>
+    </div>
+</div>
+<br>
+<br>
+<!--<div class="row">
     <div *ngFor="let actividades of lista_actividades">
         <ng-template [ngIf]="actividades.estado ==1">
             <div class="col-lg-3">
@@ -6,6 +18,22 @@
                     <img style="height:200px;" [src]="actividades.imagen_portada" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{actividades.titulo}}</h5>
+                        <a class="btn btn-primary" (click)="verMas(actividades)">Ver mas</a>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>-->
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <div *ngFor="let actividades of lista_actividades">
+        <ng-template [ngIf]="actividades.estado ==1">
+            <div class="col-md-8 mx-auto my-4">
+                <div class="card">
+                    <img style="height:200px;" [src]="actividades.imagen_portada" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h3 class="card-title">{{actividades.titulo}}</h3>
                         <a class="btn btn-primary" (click)="verMas(actividades)">Ver mas</a>
                     </div>
                 </div>

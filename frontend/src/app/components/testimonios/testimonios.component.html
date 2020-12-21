@@ -1,18 +1,74 @@
-<div class="row">
-    <div *ngFor ="let fila of lista_datos" class="col-lg-6">
-      <div class="card mb-6" style="max-width: 500px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img [src]="fila.imagen" class="card-img" alt="..." style="height: 125px;">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{{fila.nombre}}</h5>
-              <p class="card-text"></p>
-              <button (click)="verDetalle(fila.id_testimonio)" class="btn btn-primary btn-sm">Ver mas</button>
-            </div>
-          </div>
+<div class="card bg-dark text-white">
+  <img src="../../../assets/testimonios.jpg" class="card-img" alt="..." style="max-width: 3000px;">
+  <div class="card-img-overlay">
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 class="display-2">Testimonios</h1>
+    <h2>&nbsp;Historias de vida de pacientes o familias</h2>
+  </div>
+</div>
+<br>
+<br>
+<br>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+   <div *ngFor ="let fila of lista_datos" class="col-md-3 mx-auto my-4">
+      <div class="card h-100">
+        <img [src]="fila.imagen" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h4 class="card-title">{{fila.nombre}}</h4>
+          <p class="card-text" [innerHtml]="fila.descripcion"></p>
+        </div>
+        <div class="card-footer">
+          <button (click)="verDetalle(fila.id_testimonio)" class="btn btn-primary btn-sm">Ver mas</button>
         </div>
       </div>
-    </div>
+  </div>
 </div>
+<br>
+<hr color="green" size=2>
+<br>
+<div class="row">
+  <div class="col-md-2">
+
+  </div>
+  <div class="col-md-8">
+
+    <div class="card-header"><h3>Publique un nuevo testimonio</h3></div>
+
+      <div class="card-body">
+        <form [formGroup]="formTestimonios" (ngSubmit)="guardarTestimonio()" novalidate>
+          <input formControlName="id_testimonio" type="hidden" class="form-control">
+                
+          <div class="form-group">
+            <input formControlName="nombre" placeholder="Ingrese nombre" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <input formControlName="edad" placeholder="Ingrese edad" type="number" class="form-control">
+          </div>
+          <div class="form-group">
+            <angular-editor formControlName="descripcion" [config]="editorConfig"></angular-editor>
+          </div>
+
+          <div class="form-group">
+            <input (change)="mostrarFotoSeleccionada($event)" formControlName="archivo" class="form-control-file" type="file">
+          </div>
+          <div class="form-group">
+            <img style="height: 200px ;"  class="img-fluid" [src] ="this.imagenPreview || 'assets/not-found-image.jpg' " alt="">
+          </div>
+          <div class="form-group">
+            <button [disabled]="formTestimonios.invalid" type="submit" class="btn btn-success btn-block">Guardar</button>
+          </div>
+        </form>
+      </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+<hr color="green" size=3>
+<br>
+<a href="#" routerLink="/home" class="btn btn-secondary btn-lg" tabindex="-1" role="button" aria-disabled="true">Inicio</a>
+
+<ngx-spinner></ngx-spinner>
+  

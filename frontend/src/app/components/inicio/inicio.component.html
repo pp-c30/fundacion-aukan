@@ -75,53 +75,41 @@
 </div>
 
 <br>
-
-<div class="center-box" style="margin-left: 14cm; margin-right: 10cm;">
-    <div class="row">
-        <div class="col">
-            <table>
-                <tbody>
-                    <tr>
-                        <td><button type="button" class="btn btn-dark btn-lg btn-block" routerLink="/testimonios">Testimonios</button> </td>
-                        <td><button type="button" class="btn btn-dark btn-lg btn-block" routerLink="/noticia">Noticias</button> </td>
-                        <td><button type="button" class="btn btn-dark btn-lg btn-block" routerLink="/actividades">Actividades</button> </td>
-                    </tr>
-                    <tr>
-                        <td><button type="button" class="btn btn-dark btn-lg btn-block" routerLink="/prevencion">Prevencion</button> </td>
-                        <td><button type="button" class="btn btn-dark btn-lg btn-block" routerLink="/donaciones">Donaciones</button> </td>
-                        <td><button type="button" class="btn btn-dark btn-lg btn-block" routerLink="/galeria">Galeria</button> </td>
-                    </tr>
-                </tbody>
-            </table>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col-md-6 mx-auto my-4" *ngFor=" let l  of lista_datos_prev ; let isfirst = first" [ngClass]="{active:isfirst}">
+        <div class="card mb-3" style="max-width: 540px">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img [src]="l.imagen || 'assets/not-found-image.jpg'" style="height: 150px;" class="img-fluid " />
+                </div>
+                <div class="col-md-8 ">
+                    <div class="card-body ">
+                        <h5 class="card-title ">{{l.titulo}}</h5>
+                        <p class="card-text  ">
+                            {{l.descripcion}}
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
+
+
+
 <br>
 <hr>
 
-
-
-
-
-
-<div class="row" style="margin-left: 1cm;">
-    <div class="row">
-        <div class="card-group">
-            <div class="col-md-3 mx-auto my-4" *ngFor=" let n  of lista_datos ; let isfirst = first" [ngClass]="{active:isfirst}">
-                <div class="card" style="width: 17rem;">
-
-                    <img [src]="n.imagen || 'assets/not-found-image.jpg'" style="height: 280px; width: fit-content;" class="card-img-top" alt="">
-
-                    <div class="card-body">
-                        <h5 class="card-title" style="color: black;">{{n.titulo}}</h5>
-                        <p class="card-text" style="color: black;">{{n.descripcion}}</p>
-
-                        <p class="card-text" style="color: black;"><small class="text-muted">{{n.fecha_hora}}</small></p>
-
-                        <a class="btn btn-primary" (click)="verDetalle(n.id_noticia)">Ver mas</a>
-                    </div>
-                </div>
+<div class="row row-cols-1 row-cols-md-3 g-4 ">
+    <div class="col-md-3 mx-auto my-4 " *ngFor=" let n of lista_datos ; let isfirst=f irst " [ngClass]="{active:isfirst} ">
+        <div class="card h-100 ">
+            <img [src]="n.imagen || 'assets/not-found-image.jpg' " style="height: 280px; " class="card-img-top " class="card-img-top " alt="... " />
+            <div class="card-body ">
+                <h5 class="card-title ">{{n.titulo}}</h5>
+                <p class="card-text ">
+                    {{n.descripcion}}
+                </p>
             </div>
         </div>
     </div>

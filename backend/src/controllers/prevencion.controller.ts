@@ -20,6 +20,15 @@ export class PrevencionController{
         return res.json (prevencion);
     }
 
+    public async listarPrevencionpublic(req:Request,res:Response){
+
+        const db = await conexion();
+
+        let prevencion = await db.query('select * from prevencion limit 4');
+
+        return res.json (prevencion);
+    }
+
     public async guardarPrevencion(req:Request,res:Response){
 
         const db= await conexion();

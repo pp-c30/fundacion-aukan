@@ -30,6 +30,7 @@ import { DetallePrevencionComponent } from "./components/detalle-prevencion/deta
 import { DetalleActividadesComponent } from "./components/detalle-actividades/detalle-actividades.component";
 import { ActividadesComponent } from "./components/actividades/actividades.component";
 import { ActividadesDetalleComponent } from './components/actividades-detalle/actividades-detalle.component';
+import { DonacionesPublicComponent } from './components/donaciones-public/donaciones-public.component';
 
 const routes: Routes = [
   {
@@ -120,7 +121,7 @@ const routes: Routes = [
     canActivate:[AuthGuard]
   },
   {
-    path:'donaciones',
+    path:'admin-donaciones',
     component:DonacionesComponent
   },
   {
@@ -155,6 +156,10 @@ const routes: Routes = [
   {
     path:'actividades-detalle',
     component:ActividadesDetalleComponent
+  },
+  {
+    path:'donaciones',
+    component:DonacionesPublicComponent
   }
 
 

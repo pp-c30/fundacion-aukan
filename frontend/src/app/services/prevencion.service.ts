@@ -15,6 +15,10 @@ export class PrevencionService {
     return this.http.get<IPrevencion[]>('http://localhost:3000/prevencion');
   }
 
+  getPrevencionpublic(){
+    return this.http.get<IPrevencion[]>('http://localhost:3000/prevencion-public');
+  }
+
   getOnePrevencion(id:number){
     return this.http.get<IPrevencion>('http://localhost:3000/prevencion/'+id);
   }

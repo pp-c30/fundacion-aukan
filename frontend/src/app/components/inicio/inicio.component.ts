@@ -4,6 +4,8 @@ import { IGaleria } from '../../models/galeria';
 import { NoticiaService } from '../../services/noticia.service';
 import { INoticia } from "../../models/noticia";
 import { Router, NavigationExtras } from "@angular/router";
+import { PrevencionService } from "../../services/prevencion.service";
+
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
@@ -13,32 +15,30 @@ export class InicioComponent implements OnInit {
 
   listaGaleria:IGaleria[] = [];
   lista_datos = [];
+  lista_datos_prev = [];
 
 
-  constructor(private galeriaserv:GaleriaService, private router:Router, private noticiasserv:NoticiaService) { }
+  constructor(private galeriaserv:GaleriaService, private router:Router, private noticiasserv:NoticiaService, private servprev:PrevencionService) { }
 
   ngOnInit(): void {
-    this.obtenerGaleria();
     this.listarNoticia();
+    this.listarPrevencion();
   }
 
 
-obtenerGaleria()
-{
-  this.galeriaserv.getGaleriapublic().subscribe(
-    respuesta => {
-      this.listaGaleria = respuesta
-    }
-  )
-}
-
-verMas(galeria:IGaleria)
-{
-  let datosExtras:NavigationExtras = {
-    queryParams:galeria
+  listarPrevencion(){
+    this.servprev.getPrevencionpublic().subscribe(
+      resultado =>{
+        this.lista_datos_prev = resultado;
+      },
+      error => console.log(error)
+    );
   }
-  this.router.navigate(['galeria-detalle',galeria],datosExtras);
-}s
+
+  verDetalleP(id:number){
+    this.router.navigate(['/detalle-prevencion',id]);
+  }
+
 
 listarNoticia(){
   this.noticiasserv.getNoticiapublic().subscribe(

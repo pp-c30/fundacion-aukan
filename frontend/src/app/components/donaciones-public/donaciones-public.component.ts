@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DonacionesService } from '../../services/donaciones.service';
+import { IDonacionesS } from '../../models/donaciones';
 
 @Component({
   selector: 'app-donaciones-public',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonacionesPublicComponent implements OnInit {
 
-  constructor() { }
+  listadonaciones = [];
+
+  p:number = 1;
+
+
+  constructor(private servdonaciones:DonacionesService) { }
 
   ngOnInit(): void {
+    this.obtenerdonaciones();
   }
+
+  obtenerdonaciones()
+  {
+    this.servdonaciones.getDonacionpublic().subscribe(
+      resultado =>{
+        this.listadonaciones = resultado
+      }, error => console.log(error)
+
+    )
+  }
+
 
 }

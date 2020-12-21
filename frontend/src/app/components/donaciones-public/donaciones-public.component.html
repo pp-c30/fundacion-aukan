@@ -1,1 +1,101 @@
-<p>donaciones-public works!</p>
+<div class="jumbotron jumbotron-fluid" style="background: url(../../../assets/photo_2020-07-02_11-04-02.jpg) center center / cover no-repeat; align-content: center center; height: 600px; color: gray;">
+    <div class="container">
+        <div class="col-6">
+            <br>
+            <h1 style="font-size: 3cm; color: white;">
+                Fundacion
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="col-10">
+        <h1 style="font-size: 1cm;"></h1>
+        <p style="font-size: 1cm; text-align: center;">
+            Cualquier tipo de aportacion para la fundacion es bienvenida
+        </p>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-lg-6">
+        <p>
+            <a class="btn btn-secondary btn-lg btn-block" data-toggle="collapse" href="#Dfisicas" role="button" aria-expanded="false" aria-controls="Dfisicas">
+              Donaciones fisicas
+            </a>
+        </p>
+        <div class="collapse" id="Dfisicas">
+            <div class="card card-body">
+                <li>Alimentos</li>
+                <li>Ropa </li>
+                <li>Acolchados</li>
+                <li>Herramientas</li>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <p>
+            <a class="btn btn-secondary btn-lg btn-block" data-toggle="collapse" href="#Donaciones" role="button" aria-expanded="false" aria-controls="Donaciones">
+              Donaciones
+            </a>
+        </p>
+        <div class="collapse" id="Donaciones">
+            <button>
+            <a type="button" class="btn btn-secondary" href="https://mpago.la/1Wr33S7" target="_blank">
+                Doná a través de MERCADOPAGO
+            </a>
+        </button>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-2">
+
+    </div>
+
+    <div class="col-lg-8">
+        <p>
+            <a class="btn btn-secondary btn-lg btn-block" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Donaciones hechas
+            </a>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <div class="card ">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Descripcion</th>
+                                <th>Telefono</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let donaciones of listadonaciones | paginate:{itemsPerPage:5, currentPage:p} ">
+                                <ng-template [ngIf]="donaciones.estado ==1">
+                                    <td>{{donaciones.id_donacion}}</td>
+                                    <td>{{donaciones.descripcion}}</td>
+                                    <td>{{donaciones.telefono}}</td>
+                                </ng-template>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-2">
+
+    </div>
+</div>

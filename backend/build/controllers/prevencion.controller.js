@@ -29,6 +29,13 @@ class PrevencionController {
             return res.json(prevencion);
         });
     }
+    listarPrevencionpublic(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const db = yield database_1.conexion();
+            let prevencion = yield db.query('select * from prevencion limit 4');
+            return res.json(prevencion);
+        });
+    }
     guardarPrevencion(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const db = yield database_1.conexion();

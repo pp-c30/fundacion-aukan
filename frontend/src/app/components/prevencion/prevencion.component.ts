@@ -18,7 +18,7 @@ export class PrevencionComponent implements OnInit {
   }
 
   listarPrevencion(){
-    this.servicePrevencion.getPrevencion().subscribe(
+    this.servicePrevencion.getPrevencionpublic().subscribe(
       resultado =>{
         this.lista_datos = resultado;
       },
